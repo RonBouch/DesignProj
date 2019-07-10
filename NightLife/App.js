@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import Login from "./Components/Login.js";
@@ -8,7 +8,6 @@ import HomeMenuView from "./Components/HomeMenuView.js";
 import PartyPage from "./Components/PartyPage.js";
 import Public from "./Components/Public";
 
-
 class App extends React.Component {
   render() {
     return <StackNav />;
@@ -16,16 +15,16 @@ class App extends React.Component {
 }
 
 const StackNav = createStackNavigator(
-  {     
-    PartyPage:PartyPage,
+  {
+    PartyPage: PartyPage,
     Login: Login,
+    Camera: Camera,
+    Public: Public,
 
-    Public:Public,
-
-    
-    HomeMenuView:HomeMenuView,
-      Register: Register,
-  } , {headerMode:"none",defaultNavigationOptions:{headerVisable:false}},
+    HomeMenuView: HomeMenuView,
+    Register: Register
+  },
+  { headerMode: "none", defaultNavigationOptions: { headerVisable: false } },
   {
     initialRouteName: "PartyPage"
   }
@@ -36,8 +35,8 @@ export default createAppContainer(StackNav);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
