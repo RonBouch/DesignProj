@@ -53,9 +53,25 @@ export default class Public extends React.Component {
     });
   };
 
-  openCamera = () => {
-    this.props.navigation.navigate("Camera");
-  };
+  openCamera = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false, // higher res on iOS
+      aspect: [4, 3],
+    });
+  
+    if (result.cancelled) {
+      return;
+    }
+  
+    let localUri = result.uri;
+    let filename = localUri.split('/').pop();
+  
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+  
+    let formData = new FormData();
+    formData.append('photo', { uri: localUri, name: filename, type });
+    };
 
   openGallery = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({

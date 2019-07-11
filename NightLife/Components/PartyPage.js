@@ -348,7 +348,7 @@ componentDidMount(){
     <View style={styles.card}>
     <ImageBackground source={require('../assets/5.jpg')}style={{width:'100%',height:'100%'}}>
               <View style={{flexDirection:'row-reverse'}}>
-               <View><Image source={require('../assets/party1.jpg')} style={styles.cardImage} resizeMode="cover" /></View>
+               <View><Image source={{uri:'http://ruppinmobile.tempdomain.co.il/site11/DiscoBall.jpg'}} style={styles.cardImage} resizeMode="cover" /></View>
               <View style={{flex:2}}></View>
               <View><Text style={{fontSize:20,fontWeight:"bold",flex:2}}>{this.state.place.Address}</Text></View>           
               </View>         
