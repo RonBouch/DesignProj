@@ -44,7 +44,7 @@ export default class Public extends React.Component {
       longitude: -122.4324,
       eventname:"",
       eventabout:"",
-      img: " "
+      img: "1"
     };
   }
   handleAddress = e => {
@@ -58,14 +58,14 @@ export default class Public extends React.Component {
   };
 
   openGallery = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      aspect: [4, 3]
-    });
-    if (!result.cancelled) {
-      this.setState({ img: result.uri });
-      alert(img);
-    }
+    // let result = await ImagePicker.launchImageLibraryAsync({
+    //   allowsEditing: true,
+    //   aspect: [4, 3]
+    // });
+    // if (!result.cancelled) {
+    //   this.setState({ img: result.uri });
+    //   alert(img);
+    // }
   };
 
   handleSubmit = async () => {
@@ -104,6 +104,7 @@ export default class Public extends React.Component {
         longi: this.state.longitude,
         eventname:this.state.eventname,
         eventabout:this.state.eventabout,
+        img:this.state.img
       };
       console.log(data);
       console.log('event about event name '+this.state.eventname+this.state.eventabout );
@@ -135,9 +136,8 @@ export default class Public extends React.Component {
               });
               return;
             } else {
-              this.setState({
-                data: u.ID
-              });
+              this.props.navigation.navigate("HomeMenuView");
+
             }
             console.log("1 = " + u.ID);
           },
