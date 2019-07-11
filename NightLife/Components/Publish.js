@@ -33,20 +33,23 @@ export default class Public extends React.Component {
       errors: {},
       resLabel: "...",
       Show: false,
-      latitude: 37.78825,
-      longitude: -122.4324,
+      location: null,
       checkedB: true,
       checkedR: false,
       data: "",
       delta: 0.1,
-      city: "",
-      location: null,
-      Image: " "
+
+      address: "",
+      latitude: 37.78825,
+      longitude: -122.4324,
+      eventname:"",
+      eventabout:"",
+      img: " "
     };
   }
-  handlecity = e => {
+  handleAddress = e => {
     this.setState({
-      city: e
+      address: e
     });
   };
 
@@ -60,15 +63,15 @@ export default class Public extends React.Component {
       aspect: [4, 3]
     });
     if (!result.cancelled) {
-      this.setState({ Image: result.uri });
-      alert(Image);
+      this.setState({ img: result.uri });
+      alert(img);
     }
   };
 
   handleSubmit = async () => {
     if (this.isValid()) {
-      const { city } = this.state;
-      var detials = city.split(",", 2);
+      const { address } = this.state;
+      var detials = address.split(",", 2);
       console.log("detials = " + detials);
       if (detials[1] !== "") {
         this.setState({
@@ -80,13 +83,13 @@ export default class Public extends React.Component {
         });
       }
       if (
-        (await Location.geocodeAsync(city)) == "" ||
-        (await Location.geocodeAsync(city)) == null
+        (await Location.geocodeAsync(address)) == "" ||
+        (await Location.geocodeAsync(address)) == null
       ) {
         alert("Invalid city");
         return;
       }
-      let geocode = await Location.geocodeAsync(city);
+      let geocode = await Location.geocodeAsync(address);
       console.log("geocode  = " + geocode[0].latitude);
 
       this.setState({
@@ -96,13 +99,17 @@ export default class Public extends React.Component {
       console.log("latitdue  = " + this.state.latitude);
 
       const data = {
-        city: this.state.city,
+        address: this.state.address,
         lati: this.state.latitude,
-        longi: this.state.longitude
+        longi: this.state.longitude,
+        eventname:this.state.eventname,
+        eventabout:this.state.eventabout,
       };
       console.log(data);
+      console.log('event about event name '+this.state.eventname+this.state.eventabout );
+
       fetch(
-        "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/InsertPlace",
+        "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/InsertEvent",
         {
           method: "post",
           headers: new Headers({
@@ -145,8 +152,8 @@ export default class Public extends React.Component {
 
   isValid() {
     let valid = false;
-    const { city } = this.state;
-    if (city.length !== 0) {
+    const { address } = this.state;
+    if (address.length !== 0) {
       valid = true;
     }
     return valid;
@@ -184,7 +191,7 @@ export default class Public extends React.Component {
               containerStyle={{ width: 300 }}
               errorMessage="שם האירוע"
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
-              onChangeText={this.txtFNameValue}
+              onChangeText={(e)=>this.setState({eventname:e})}
             />
             <Text style={{ color: "red" }}>{this.state.errors.fname}</Text>
           </View>
@@ -194,7 +201,7 @@ export default class Public extends React.Component {
               placeholder="כתובת האירוע"
               containerStyle={{ width: 300 }}
               errorMessage="כתובת האירוע"
-              onChangeText={this.handlecity}
+              onChangeText={this.handleAddress}
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />
           </View>
@@ -205,6 +212,8 @@ export default class Public extends React.Component {
               placeholder="ספר על האירוע"
               errorStyle={{ color: "red" }}
               errorMessage="ספר על האירוע"
+              onChangeText={(e)=>this.setState({eventabout:e})}
+
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />
           </View>
@@ -226,7 +235,7 @@ export default class Public extends React.Component {
           </View>
 
           <View>
-            <Text style={{ color: "red" }}>{this.state.errors.city}</Text>
+            <Text style={{ color: "red" }}>{this.state.errors.address}</Text>
           </View>
 
           <Button onPress={this.handleSubmit} title="Confirm identity" />
