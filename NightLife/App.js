@@ -7,6 +7,7 @@ import Register from "./Components/Register.js";
 import HomeMenuView from "./Components/HomeMenuView.js";
 import PartyPage from "./Components/PartyPage.js";
 import Public from "./Components/Public";
+import Camera from "./Components/Camera.js";
 
 class App extends React.Component {
   render() {

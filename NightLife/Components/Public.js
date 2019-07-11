@@ -59,7 +59,7 @@ export default class Public extends React.Component {
       allowsEditing: true,
       aspect: [4, 3]
     });
-    if (!res.cancelled) {
+    if (!result.cancelled) {
       this.setState({ Image: result.uri });
       alert(Image);
     }
