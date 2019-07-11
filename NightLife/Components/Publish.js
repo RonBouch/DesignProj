@@ -58,14 +58,15 @@ export default class Public extends React.Component {
   };
 
   openGallery = async () => {
-    // let result = await ImagePicker.launchImageLibraryAsync({
-    //   allowsEditing: true,
-    //   aspect: [4, 3]
-    // });
-    // if (!result.cancelled) {
-    //   this.setState({ img: result.uri });
-    //   alert(img);
-    // }
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3]
+    });
+    if (!result.cancelled) {
+      console.log("result ",result)
+      this.setState({ img: result.uri });
+      alert(img);
+    }
   };
 
   handleSubmit = async () => {
@@ -139,7 +140,6 @@ export default class Public extends React.Component {
               this.props.navigation.navigate("HomeMenuView");
 
             }
-            console.log("1 = " + u.ID);
           },
           error => {
             console.log("err post=", error);
