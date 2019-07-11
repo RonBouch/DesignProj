@@ -22,7 +22,7 @@ export default class PartyPage extends React.Component {
       latitude: 37.78825,
       longitude: -122.4324,
       delta: 0.1,
-      city:"",
+      address:"",
       location:null,
       places: null,  
       show:false,
@@ -42,9 +42,9 @@ componentDidMount(){
 
 
   
-  handlecity = e => {
+  handleAddress = e => {
     this.setState({
-      city: e
+      address: e
     });
   };
 
@@ -57,8 +57,8 @@ componentDidMount(){
       });
     }
     if (this.isValid()) {
-      const { city } = this.state;
-      var detials = city.split(",", 2);
+      const { address } = this.state;
+      var detials = address.split(",", 2);
       console.log("detials = " + detials)
       if (detials[1] !== "") {
         this.setState({
@@ -70,7 +70,7 @@ componentDidMount(){
         });
       }
 
-      let geocode = await Location.geocodeAsync(city);
+      let geocode = await Location.geocodeAsync(address);
       console.log("geocode  = " + geocode[0].latitude)
 
       this.setState({
@@ -85,8 +85,8 @@ componentDidMount(){
   };
   isValid() {
     let valid = false;
-    const { city } = this.state;
-    if (city.length !== 0) {
+    const { address } = this.state;
+    if (address.length !== 0) {
       valid = true;
     }
     return valid;
@@ -183,7 +183,7 @@ componentDidMount(){
        markers =  this.state.places.map((place, index) => {
       
         if(index==this.state.pageToShow){
-        this.viewPage=place.City
+        this.viewPage=place.Address
         }
         return(
         <Marker
@@ -222,7 +222,7 @@ componentDidMount(){
   //             </View>
   //             <View style={{}}>
   //               <Text>
-  //               {place.City}'\n'
+  //               {place.Address}'\n'
   //                  מס 0523665524 
   //                 פתוח 24//7
   //                 </Text>
@@ -256,7 +256,7 @@ componentDidMount(){
 
           <View >
           <TextInput
-          style={styles.input} onChangeText={this.handlecity} value={this.state.city} placeholder="City..Street..Number"></TextInput>   
+          style={styles.input} onChangeText={this.handleAddress} value={this.state.Address} placeholder="City..Street..Number"></TextInput>   
           </View>
 
           <TouchableOpacity
@@ -350,7 +350,7 @@ componentDidMount(){
               <View style={{flexDirection:'row-reverse'}}>
                <View><Image source={require('../assets/party1.jpg')} style={styles.cardImage} resizeMode="cover" /></View>
               <View style={{flex:2}}></View>
-              <View><Text style={{fontSize:20,fontWeight:"bold",flex:2}}>{this.state.place.City}</Text></View>           
+              <View><Text style={{fontSize:20,fontWeight:"bold",flex:2}}>{this.state.place.Address}</Text></View>           
               </View>         
               <View >
                 <Text style={{fontSize:16,fontWeight:"bold"}}>
