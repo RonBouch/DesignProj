@@ -42,8 +42,8 @@ export default class Public extends React.Component {
       address: "",
       latitude: 37.78825,
       longitude: -122.4324,
-      eventname:"",
-      eventabout:"",
+      eventname: "",
+      eventabout: "",
       img: "1"
     };
   }
@@ -56,22 +56,22 @@ export default class Public extends React.Component {
   openCamera = async () => {
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: false, // higher res on iOS
-      aspect: [4, 3],
+      aspect: [4, 3]
     });
-  
+
     if (result.cancelled) {
       return;
     }
-  
+
     let localUri = result.uri;
-    let filename = localUri.split('/').pop();
-  
+    let filename = localUri.split("/").pop();
+
     let match = /\.(\w+)$/.exec(filename);
     let type = match ? `image/${match[1]}` : `image`;
-  
+
     let formData = new FormData();
-    formData.append('photo', { uri: localUri, name: filename, type });
-    };
+    formData.append("photo", { uri: localUri, name: filename, type });
+  };
 
   openGallery = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -79,9 +79,9 @@ export default class Public extends React.Component {
       aspect: [4, 3]
     });
     if (!result.cancelled) {
-      console.log("result ",result)
+      console.log("result ", result);
       this.setState({ img: result.uri });
-      alert(img);
+      alert(this.state.img);
     }
   };
 
@@ -119,12 +119,14 @@ export default class Public extends React.Component {
         address: this.state.address,
         lati: this.state.latitude,
         longi: this.state.longitude,
-        eventname:this.state.eventname,
-        eventabout:this.state.eventabout,
-        img:this.state.img
+        eventname: this.state.eventname,
+        eventabout: this.state.eventabout,
+        img: this.state.img
       };
       console.log(data);
-      console.log('event about event name '+this.state.eventname+this.state.eventabout );
+      console.log(
+        "event about event name " + this.state.eventname + this.state.eventabout
+      );
 
       fetch(
         "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/InsertEvent",
@@ -154,7 +156,6 @@ export default class Public extends React.Component {
               return;
             } else {
               this.props.navigation.navigate("HomeMenuView");
-
             }
           },
           error => {
@@ -207,7 +208,7 @@ export default class Public extends React.Component {
               containerStyle={{ width: 300 }}
               errorMessage="שם האירוע"
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
-              onChangeText={(e)=>this.setState({eventname:e})}
+              onChangeText={e => this.setState({ eventname: e })}
             />
             <Text style={{ color: "red" }}>{this.state.errors.fname}</Text>
           </View>
@@ -228,8 +229,7 @@ export default class Public extends React.Component {
               placeholder="ספר על האירוע"
               errorStyle={{ color: "red" }}
               errorMessage="ספר על האירוע"
-              onChangeText={(e)=>this.setState({eventabout:e})}
-
+              onChangeText={e => this.setState({ eventabout: e })}
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />
           </View>
