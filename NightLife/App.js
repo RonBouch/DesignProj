@@ -6,7 +6,7 @@ import Login from "./Components/Login.js";
 import Register from "./Components/Register.js";
 import HomeMenuView from "./Components/HomeMenuView.js";
 import PartyPage from "./Components/PartyPage.js";
-import Public from "./Components/Public";
+import Publish from "./Components/Publish";
 import Camera from "./Components/Camera.js";
 
 class App extends React.Component {
@@ -20,7 +20,7 @@ const StackNav = createStackNavigator(
     PartyPage: PartyPage,
     Login: Login,
     Camera: Camera,
-    Public: Public,
+    Publish: Publish,
 
     HomeMenuView: HomeMenuView,
     Register: Register
