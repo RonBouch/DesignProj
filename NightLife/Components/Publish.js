@@ -263,7 +263,7 @@ export default class Public extends React.Component {
             <Text style={{ color: "red" }}>{this.state.errors.address}</Text>
           </View>
 
-          <Button onPress={this.handleSubmit} title="Confirm identity" />
+          <Button onPress={this.handleSubmit} title="פרסם אירוע" />
 
           {!this.state.Show && (
             <Text style={{ color: "red" }}> {this.state.resLabel}</Text>

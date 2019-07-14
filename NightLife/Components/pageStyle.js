@@ -112,5 +112,11 @@ export default StyleSheet.create({
     },
     lblText:{
         fontSize:30
+    },
+    addImage: {
+        flexDirection: "row",
+      },
+    icon:{
+        margin:20
     }
 });
