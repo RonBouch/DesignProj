@@ -123,7 +123,7 @@ export default class Register extends React.Component {
               });
               return;
             } else {
-              this.props.navigation.navigate("Camera");
+              this.props.navigation.navigate("HomeMenuView");
             }
             console.log(result.d);
             console.log(result);
