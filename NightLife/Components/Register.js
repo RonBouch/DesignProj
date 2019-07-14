@@ -35,7 +35,9 @@ export default class Register extends React.Component {
     this.vaildForm = false;
     this.state = {
       message: "",
-      date: new Date()
+      date: new Date(),
+      formIsValid:false,
+      errors: {},
     };
   }
 
@@ -66,29 +68,96 @@ export default class Register extends React.Component {
   changeGender = e => {
     this.gender = e;
   };
+  validateForm() {
 
-  validation = () => {
-    if (this.firstName == "") {
-      this.setState({ message: "אנא הכנס שם פרטי" });
-    } else if (this.lastName == "") {
-      this.setState({ message: "אנא הכנס שם משפחה" });
-    } else if (this.email == "") {
-      this.setState({ message: "אנא הכנס כתובת אימייל" });
-    } else if (this.password == "") {
-      this.setState({ message: "אנא הכנס סיסמא" });
-    } else if (
-      this.verifyPassword == "" ||
-      this.verifyPassword != this.password
-    ) {
-      this.setState({ message: "אנא אמת את סיסמתך" });
-    } else {
-      this.vaildForm = true;
-      this.register();
+    let errors = {};
+    let formIsValid = true;
+
+  //   if(this.us.fname!=""){
+  //    let reg = /^[a-zA-z][a-z\s]*$/;
+  //    if(!reg.test(this.us.fname))
+  //    {
+  //       formIsValid = false;
+  //       errors["fname"] = "*Please enter your First Name.";   
+
+  //    }
+  //  if(this.us.lname!=""){
+  //    let reg = /^[a-zA-z][a-z\s]*$/;
+  //    if(!reg.test(this.us.lname))
+  //    {
+  //     formIsValid = false;
+  //       errors["lname"] = "*Please enter your Last Name.";   
+  //    }
+  //   }
+    if (!this.email) {
+        formIsValid = false;
+        errors["email"] = "*Please enter your email";
     }
-  };
+
+    if (this.email!="") {
+        let pattern1 = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+        if (!pattern1.test(this.email)) {
+            formIsValid = false;
+            errors["email"] = "Ron@gmail.com דוגמה : לאימייל נכון *.";
+        }
+    }
+    if (this.password=="") {
+        formIsValid = false;
+        errors["password"] = "הכנס סיסמה ";
+    }
+
+    if (this.password != "") {
+        let re = /^(?=.{4,})[a-zA-Z0-9_.-]*$/;
+        let res = re.test(this.password);
+        if (!res) {
+            formIsValid = false;
+            errors["password"] = "הכנס סיסמה מעל 4 מספרים ואותיות*";
+        }
+    }
+
+
+    if (this.verifyPassword=="") {
+        formIsValid = false;
+        errors["verifyPassword"] = "*The Password Not Same.";
+    }
+
+    if (this.verifyPassword != "") {
+        if (this.verifyPassword!=this.password) {
+            formIsValid = false;
+            errors["verifyPassword"] = "*Please enter Same password.";
+        }
+    }
+
+    this.setState({
+        errors: errors
+    });
+    return formIsValid;
+}
+
+
+  // validation = () => {
+  //   if (this.firstName == "") {
+  //     this.setState({ message: "אנא הכנס שם פרטי" });
+  //   } else if (this.lastName == "") {
+  //     this.setState({ message: "אנא הכנס שם משפחה" });
+  //   } else if (this.email == "") {
+
+  //     this.setState({ message: "אנא הכנס כתובת אימייל" });
+  //   } else if (this.password == "") {
+  //     this.setState({ message: "אנא הכנס סיסמא" });
+  //   } else if (
+  //     this.verifyPassword == "" ||
+  //     this.verifyPassword != this.password
+  //   ) {
+  //     this.setState({ message: "אנא אמת את סיסמתך" });
+  //   } else {
+  //     this.vaildForm = true;
+  //     this.register();
+  //   }
+  // };
 
   register = () => {
-    if (this.vaildForm) {
+    if (this.validateForm()) {
       const data = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -132,7 +201,8 @@ export default class Register extends React.Component {
             console.log("err post=", error);
           }
         );
-    }
+        }
+      
   };
 
   LoginBtn=()=>{
@@ -151,12 +221,16 @@ export default class Register extends React.Component {
           placeholder="שם פרטי"
           onChangeText={this.changeFirstName}
         />
+        <Text style={{ color: 'red' }}>{this.state.errors.firstName}</Text>
+
 
         <TextInput
           style={styles.input}
           placeholder="שם משפחה"
           onChangeText={this.changeLastName}
         />
+         <Text style={{ color: 'red' }}>{this.state.errors.lastName}</Text>
+
 
         <TextInput
           style={styles.input}
@@ -164,6 +238,7 @@ export default class Register extends React.Component {
           placeholder="אמייל"
           onChangeText={this.changeEmail}
         />
+        <Text style={{ color: 'red' }}>{this.state.errors.email}</Text>
 
         <TextInput
           style={styles.input}
@@ -171,6 +246,7 @@ export default class Register extends React.Component {
           placeholder="סיסמא"
           onChangeText={this.changePassword}
         />
+        <Text style={{ color: 'red' }}>{this.state.errors.password}</Text>
 
         <TextInput
           style={styles.input}
@@ -178,6 +254,7 @@ export default class Register extends React.Component {
           placeholder="אימות סיסמא"
           onChangeText={this.changeVerifyPassword}
         />
+        <Text style={{ color: 'red' }}>{this.state.errors.verifyPassword}</Text>
 
         <DatePicker
           style={{ width: 200, margin: 10 }}
@@ -226,7 +303,7 @@ export default class Register extends React.Component {
          /> */}
         <TouchableOpacity
         style={styles.buttonContainer}
-           onPress={this.validation}>
+           onPress={this.register}>
            <Text>הרשם</Text>
         </TouchableOpacity>
 
@@ -243,6 +320,8 @@ export default class Register extends React.Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
