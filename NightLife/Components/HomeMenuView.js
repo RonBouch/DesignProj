@@ -173,5 +173,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "center",
     marginTop: 30
-  }
+  },
+  info: {}
 });

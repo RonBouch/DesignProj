@@ -6,8 +6,8 @@ import {
   Button,
   StyleSheet,
   Linking,
-   TouchableOpacity,
-   ImageBackground
+  TouchableOpacity,
+  ImageBackground
 } from "react-native";
 import { WebBrowser } from "expo";
 
@@ -19,7 +19,7 @@ export default class Login extends React.Component {
     this.vaildForm = false;
     this.state = {
       message: "",
-      data:"avi"
+      data: "avi"
     };
   }
 
@@ -43,7 +43,6 @@ export default class Login extends React.Component {
   };
 
   login = () => {
-    this.props.navigation.navigate('HomeMenuView',{s:6});
     if (this.vaildForm) {
       const data = {
         password: this.password,
@@ -76,7 +75,7 @@ export default class Login extends React.Component {
               });
               return;
             } else {
-              this.props.navigation.navigate("Camera");
+              this.props.navigation.navigate("HomeMenuView");
             }
             console.log(result.d);
             console.log(result);
@@ -87,47 +86,53 @@ export default class Login extends React.Component {
         );
     }
   };
-  RegisterBtn=()=>{
-    this.props.navigation.navigate('Register')
-  }
+  RegisterBtn = () => {
+    this.props.navigation.navigate("Register");
+  };
   render() {
     return (
-      <ImageBackground source={require('../assets/backGroung.jpg')}style={styles.container}>
+      <ImageBackground
+        source={require("../assets/backGroung.jpg")}
+        style={styles.container}
+      >
+        <View style={styles.container}>
+          <View style={styles.formContainer}>
+            <Text style={styles.title}>התחברות</Text>
+            <TextInput
+              style={styles.input}
+              keyboardType="email-address"
+              placeholder="אימייל"
+              onChangeText={this.changeEmail}
+            />
 
-      <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>התחברות</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="email-address"
-          placeholder="אימייל"
-          onChangeText={this.changeEmail}
-        />
+            <TextInput
+              style={styles.input}
+              secureTextEntry={true}
+              placeholder="סיסמא"
+              onChangeText={this.changePass}
+            />
+            <Text style={styles.textMessage}>{this.state.message}</Text>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.validation}
+            >
+              <Text>התחבר</Text>
+            </TouchableOpacity>
 
-        <TextInput
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder="סיסמא"
-          onChangeText={this.changePass}
-        />
- <Text style={styles.textMessage}>{this.state.message}</Text>
-         <TouchableOpacity
-        style={styles.buttonContainer}
-           onPress={()=>this.props.navigation.navigate('HomeMenuView')}>
-           <Text>התחבר</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity
-        style={styles.buttonContainer}
-           onPress={this.RegisterBtn}>
-           <Text>הרשמה</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('FaceBookPage')}
-            style={styles.buttonContainerFB} >
-            <Text style={styles.buttonText}>FaceBook login</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.RegisterBtn}
+            >
+              <Text>הרשמה</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("FaceBookPage")}
+              style={styles.buttonContainerFB}
+            >
+              <Text style={styles.buttonText}>FaceBook login</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
       </ImageBackground>
     );
   }
@@ -136,9 +141,9 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(255,255,255,.3)',
+    backgroundColor: "rgba(255,255,255,.3)",
     alignItems: "center",
-        padding: 20,
+    padding: 20
   },
   title: {
     fontSize: 40,
@@ -153,7 +158,7 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 2,
     margin: 10,
-    color:'black',
+    color: "black"
   },
   textMessage: {
     margin: 50,
@@ -170,32 +175,31 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "red"
   },
-     buttonContainer: {
-      backgroundColor: 'gray',
-      paddingVertical: 10,
-      width: 240,
-      height: 45,
-      borderRadius: 200,
-      alignItems: 'center',
-      flexGrow: 1,
-      justifyContent: 'center',                 
-       marginTop: 30
-
-    },  
-    formContainer: {
-              paddingBottom: 150,
-            },
-            buttonContainerFB: {
-                  backgroundColor: 'gray',
-                  paddingVertical: 10,
-                  width: 240,
-                  height: 45,
-                  borderRadius: 200,
-                  alignItems: 'center',
-                  flexGrow: 1,
-                  justifyContent: 'center',
-                  marginTop: 30
-                },
+  buttonContainer: {
+    backgroundColor: "gray",
+    paddingVertical: 10,
+    width: 240,
+    height: 45,
+    borderRadius: 200,
+    alignItems: "center",
+    flexGrow: 1,
+    justifyContent: "center",
+    marginTop: 30
+  },
+  formContainer: {
+    paddingBottom: 150
+  },
+  buttonContainerFB: {
+    backgroundColor: "gray",
+    paddingVertical: 10,
+    width: 240,
+    height: 45,
+    borderRadius: 200,
+    alignItems: "center",
+    flexGrow: 1,
+    justifyContent: "center",
+    marginTop: 30
+  }
 });
 // const styles = StyleSheet.create({
 //   container: {
