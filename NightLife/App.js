@@ -17,17 +17,18 @@ class App extends React.Component {
 
 const StackNav = createStackNavigator(
   {
+    Publish: Publish,
+
     PartyPage: PartyPage,
     Login: Login,
     Camera: Camera,
-    Publish: Publish,
 
     HomeMenuView: HomeMenuView,
     Register: Register
   },
   { headerMode: "none", defaultNavigationOptions: { headerVisable: false } },
   {
-    initialRouteName: "PartyPage"
+    initialRouteName: "Publish"
   }
 );
 

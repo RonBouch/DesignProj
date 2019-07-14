@@ -71,6 +71,15 @@ export default class Public extends React.Component {
 
     let formData = new FormData();
     formData.append("photo", { uri: localUri, name: filename, type });
+    console.log('formdata = ',formData);
+    return await fetch('http://ruppinmobile.tempdomain.co.il/site11/image', {
+      method: 'POST',
+      body: formData,
+      header: {
+        'content-type': 'multipart/form-data',
+      },
+    });
+  
   };
 
   openGallery = async () => {
