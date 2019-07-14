@@ -8,6 +8,7 @@ import HomeMenuView from "./Components/HomeMenuView.js";
 import PartyPage from "./Components/PartyPage.js";
 import Publish from "./Components/Publish";
 import Camera from "./Components/Camera.js";
+import FaceBookPage from './Components/FaceBookPage';
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,7 @@ const StackNav = createStackNavigator(
     PartyPage: PartyPage,
     Login: Login,
     Camera: Camera,
+    FaceBookPage: FaceBookPage,
 
     HomeMenuView: HomeMenuView,
     Register: Register
