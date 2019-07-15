@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { WebBrowser } from "expo";
 
 export default class Login extends React.Component {
@@ -129,7 +130,15 @@ export default class Login extends React.Component {
               onPress={() => this.props.navigation.navigate("FaceBookPage")}
               style={styles.buttonContainerFB}
             >
-              <Text style={styles.buttonText}>FaceBook login</Text>
+              <Text style={styles.buttonText}>
+                <Ionicons
+                  name="logo-facebook"
+                  size={18}
+                  style={styles.icon}
+                />
+                {"  "}
+                FaceBook
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
