@@ -203,11 +203,11 @@ export default class Register extends React.Component {
                 keyboardVerticalOffset="-30"
                 behavior="position"
               >
-               <View style={{ marginTop: 10 }}>
+               <View style={{ marginTop:-10 }}>
                <TouchableOpacity
              onPress={() => this.props.navigation.goBack()}
             >
-            <Ionicons name="md-arrow-back" size={24}  />
+            <Ionicons name="md-arrow-back" size={28}  />
             </TouchableOpacity>
           </View>
           <View>
