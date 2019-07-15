@@ -18,8 +18,7 @@ export default class Login extends React.Component {
     this.email = "";
     this.vaildForm = false;
     this.state = {
-      message: "",
-      data: "avi"
+      message: ""
     };
   }
 
@@ -86,9 +85,16 @@ export default class Login extends React.Component {
         );
     }
   };
+
   RegisterBtn = () => {
     this.props.navigation.navigate("RegisterPage");
   };
+
+
+  FaceBookBtn = () => {
+    this.props.navigation.navigate("FaceBookPage");
+  };
+
   render() {
     return (
       <ImageBackground
@@ -133,7 +139,7 @@ export default class Login extends React.Component {
               <Text>הרשמה</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("FaceBookPage")}
+              onPress={this.FaceBookBtn}
               style={styles.buttonContainerFB}
             >
               <Text style={styles.buttonText}>
@@ -219,4 +225,3 @@ const styles = StyleSheet.create({
     color: "white"
   }
 });
-

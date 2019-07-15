@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, KeyboardAvoidingView, Alert,Button } from 'react-native';
-import styles from './pageStyle';
+import styles from './SearchPageStyle';
 import { Facebook } from 'expo';
 
 export default class FaceBookPage extends React.Component {

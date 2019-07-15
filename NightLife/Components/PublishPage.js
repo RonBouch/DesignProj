@@ -6,7 +6,7 @@ import {
   CheckBox,
   Input
 } from "react-native-elements";
-import styles from "./pageStyle";
+import styles from "./SearchPageStyle";
 import { Location, Permissions, ImagePicker } from "expo";
 // import CheckBox from 'react-native-check-box'
 import { Icon } from "react-native-elements";

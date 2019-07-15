@@ -3,7 +3,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import LoginPage from "./Components/LoginPage.js";
 import RegisterPage from "./Components/RegisterPage.js";
 import HomePage from "./Components/HomePage.js";
-import PartyPage from "./Components/PartyPage.js";
+import SearchPage from "./Components/SearchPage.js";
 import PublishPage from "./Components/PublishPage";
 import FaceBookPage from "./Components/FaceBookPage";
 
@@ -17,7 +17,7 @@ const StackNav = createStackNavigator(
   {
     HomePage: HomePage,
 
-    PartyPage: PartyPage,
+    SearchPage: SearchPage,
 
     RegisterPage: RegisterPage,
 
