@@ -1,4 +1,5 @@
 import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 import {
   Text,
   View,
@@ -8,8 +9,6 @@ import {
   ImageBackground,
   Image
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-//import styles from './pageStyle';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -32,9 +31,9 @@ export default class Login extends React.Component {
 
   validation = () => {
     if (this.email == "") {
-      this.setState({ message: "אנא הכנס כתובת אימייל" });
+      this.setState({ message: "* אנא הכנס כתובת אימייל" });
     } else if (this.password == "") {
-      this.setState({ message: "אנא הכנס סיסמא" });
+      this.setState({ message: "* אנא הכנס סיסמא" });
     } else {
       this.vaildForm = true;
       this.login();
@@ -90,10 +89,13 @@ export default class Login extends React.Component {
     this.props.navigation.navigate("RegisterPage");
   };
 
+  // FaceBookBtn = () => {
+  //   this.props.navigation.navigate("FaceBookPage");
+  // };
 
-  FaceBookBtn = () => {
-    this.props.navigation.navigate("FaceBookPage");
-  };
+  // GoogleBtn = () => {
+  //   this.props.navigation.navigate("GooglePage");
+  // };
 
   render() {
     return (
@@ -111,36 +113,52 @@ export default class Login extends React.Component {
               />
             </View>
 
-            <TextInput
-              style={styles.input}
-              keyboardType="email-address"
-              placeholder="אימייל"
-              onChangeText={this.changeEmail}
-            />
+            <View style={styles.loginForm}>
+              <TextInput
+                style={styles.input}
+                keyboardType="email-address"
+                placeholder="אימייל"
+                onChangeText={this.changeEmail}
+              />
 
-            <TextInput
-              style={styles.input}
-              secureTextEntry={true}
-              placeholder="סיסמא"
-              onChangeText={this.changePass}
-            />
-            <Text style={styles.textMessage}>{this.state.message}</Text>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={this.validation}
-            >
-              <Text>התחבר</Text>
-            </TouchableOpacity>
+              <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder="סיסמא"
+                onChangeText={this.changePass}
+              />
+
+              <TouchableOpacity
+                style={styles.loginButton}
+                onPress={this.validation}
+              >
+                <Text style={styles.loginButton}>התחבר</Text>
+              </TouchableOpacity>
+
+              <Text style={styles.textMessage}>{this.state.message}</Text>
+            </View>
 
             <TouchableOpacity
-              style={styles.buttonContainer}
+              style={styles.registerButton}
               onPress={this.RegisterBtn}
             >
               <Text>הרשמה</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={this.GoogleBtn}
+              style={styles.googleButton}
+            >
+              <Text style={styles.buttonText}>
+                <Ionicons name="logo-google" size={18} style={styles.icon} />
+                {"  "}
+                Google
+              </Text>
+            </TouchableOpacity>
+
             <TouchableOpacity
               onPress={this.FaceBookBtn}
-              style={styles.buttonContainerFB}
+              style={styles.faceBookButton}
             >
               <Text style={styles.buttonText}>
                 <Ionicons name="logo-facebook" size={18} style={styles.icon} />
@@ -160,34 +178,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "rgba(255,255,255,.3)",
     alignItems: "center",
-    padding: 20
+    padding: 40
   },
   title: {
     fontSize: 40,
     margin: 30
   },
+  loginForm: {
+    marginTop: 20
+  },
+  loginButton: {
+    color: "blue"
+  },
   input: {
+    backgroundColor: "rgba(255,255,255,.5)",
     borderRadius: 10,
-    fontSize: 10,
     height: 40,
-    width: 200,
     textAlign: "center",
     borderColor: "gray",
     borderWidth: 2,
-    margin: 10,
-    color: "black"
+    margin: 10
   },
   textMessage: {
-    margin: 50,
+    margin: 10,
     color: "red"
   },
   cardImage: {
     width: 240,
     height: 130
   },
-  registerBtn: {
-    color: "red"
-  },
+
   genderRadio: {
     flexDirection: "row",
     margin: 10
@@ -196,28 +216,27 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "red"
   },
-  buttonContainer: {
-    backgroundColor: "gray",
-    paddingVertical: 10,
-    width: 240,
+  registerButton: {
+    backgroundColor: "rgba(255,255,150,.9)",
     height: 45,
-    borderRadius: 200,
     alignItems: "center",
-    flexGrow: 1,
     justifyContent: "center",
     marginTop: 30
   },
   formContainer: {
     paddingBottom: 150
   },
-  buttonContainerFB: {
+  faceBookButton: {
     backgroundColor: "blue",
-    paddingVertical: 10,
-    width: 240,
     height: 45,
-    borderRadius: 200,
     alignItems: "center",
-    flexGrow: 1,
+    justifyContent: "center",
+    marginTop: 30
+  },
+  googleButton: {
+    backgroundColor: "green",
+    height: 45,
+    alignItems: "center",
     justifyContent: "center",
     marginTop: 30
   },
