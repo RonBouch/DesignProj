@@ -16,6 +16,7 @@ import DatePicker from "react-native-datepicker";
 import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
 // import styles from './pageStyle';
+// import Icon from "react-native-vector-icons/FontAwesome";
 
 const DissmisKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -201,6 +202,13 @@ export default class Register extends React.Component {
                 keyboardVerticalOffset="-30"
                 behavior="position"
               >
+               <View style={{ marginTop: 30, flexDirection: "column-reverse" }}>
+               <TouchableOpacity
+             onPress={() => this.props.navigation.goBack()}
+            >
+            <Ionicons name="md-arrow-back" size={24}  />
+            </TouchableOpacity>
+          </View>
                 <Text style={styles.title}>הרשמה</Text>
 
                 <TextInput

@@ -201,9 +201,7 @@ export default class Public extends React.Component {
         <View style={styles.Header}>
           <View style={{ marginTop: 30, flexDirection: "column-reverse" }}>
             <Button
-              onPress={() => {
-                this.props.navigation.navigate("HomeMenuView");
-              }}
+               onPress={() => this.props.navigation.goBack()}
               success
               type="outline"
               icon={<Icon name="arrow-back" />}
