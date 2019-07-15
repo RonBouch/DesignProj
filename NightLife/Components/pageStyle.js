@@ -79,16 +79,12 @@ export default StyleSheet.create({
     // },
     card: {
 
-        // padding: 10,
-        backgroundColor: "#FFF",
-        // marginHorizontal: 10,
+        backgroundColor: 'rgba(255,255,255,.9)',
         shadowColor: "#000",
         height: '60%',
         width: '100%',
-        // marginBottom:40,
         borderWidth:2,
         backgroundColor:'gray',
-        // borderRadius:2,
         position: 'absolute',
         bottom: -40,
       },

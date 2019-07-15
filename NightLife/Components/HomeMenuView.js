@@ -20,8 +20,14 @@ export default class HomeMenuView extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
+     <View><Image source={require('../assets/smalllogo.png')} style={styles.cardImage} resizeMode="cover" /></View>
+
+      {/* <View style={{alignItems:"center",textAlign:'center',position:'absolute',height:'100%',width:'100%'}}>
+        <Image source={require('../assets/smalllogo.png')}style={{}}/>
+
+        </View> */}
         <View style={styles.inner}>
-          <Text>Night-Life {this.userId}</Text>
+        
           <View style={styles.formContainer}>
             <TouchableOpacity
               style={styles.buttonContainer}
@@ -107,7 +113,12 @@ export default class HomeMenuView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingTop: 100
+    paddingTop: 60
+  },
+  cardImage: {
+    width: 240,
+    height:130,
+
   },
   inner: {
     width: "80%",

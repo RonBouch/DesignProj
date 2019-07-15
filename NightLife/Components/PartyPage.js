@@ -347,16 +347,15 @@ componentDidMount(){
                 
     <View style={styles.card}>
     <ImageBackground source={require('../assets/5.jpg')}style={{width:'100%',height:'100%'}}>
+    <View style={{backgroundColor: 'rgba(255,255,255,.6)',height:'100%'}}>
               <View style={{flexDirection:'row-reverse'}}>
                <View><Image source={{uri:'http://ruppinmobile.tempdomain.co.il/site11/DiscoBall.jpg'}} style={styles.cardImage} resizeMode="cover" /></View>
               <View style={{flex:2}}></View>
-              <View><Text style={{fontSize:20,fontWeight:"bold",flex:2}}>{this.state.place.Address}</Text></View>           
+              <View><Text style={{fontSize:18,fontWeight:"bold",flex:2}}>{this.state.place.Address}</Text>
+              <Text style={{fontSize:16,fontWeight:"bold",flex:2}}>שם המקום:{this.state.place.EventName}</Text></View>           
               </View>         
               <View >
-                <Text style={{fontSize:16,fontWeight:"bold"}}>
-                   מס 0523665524 
-                  פתוח 24//7
-                  </Text>
+                <Text style={{fontSize:14,fontWeight:"bold"}}>מידע על האירוע : {this.state.place.EventAbout} </Text>
               </View>
               <View style={{flexDirection:'row-reverse',bottom:-45}}>
                <View  style={{flex:1}}></View>
@@ -376,6 +375,7 @@ componentDidMount(){
   checkedColor='yellow'
   checked={this.state.checkedB}
   onPress={() => this.setState({checkedB: !this.state.checkedB})}/>
+              </View>
               </View>
               </View>
               </ImageBackground>
