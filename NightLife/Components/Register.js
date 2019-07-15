@@ -131,7 +131,7 @@ export default class Register extends React.Component {
   }
 
   register = () => {
-    //if (this.validateForm()) {
+    if (this.validateForm()) {
       const data = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -176,7 +176,7 @@ export default class Register extends React.Component {
           }
         );
   };
-
+  }
   render() {
     return (
       <ImageBackground
