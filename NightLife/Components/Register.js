@@ -9,7 +9,8 @@ import {
   ImageBackground,
   Keyboard,
   TouchableWithoutFeedback,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Image
 } from "react-native";
 import { Icon } from "react-native-elements";
 import DatePicker from "react-native-datepicker";
@@ -202,14 +203,20 @@ export default class Register extends React.Component {
                 keyboardVerticalOffset="-30"
                 behavior="position"
               >
-               <View style={{ marginTop: 30, flexDirection: "column-reverse" }}>
+               <View style={{ marginTop: 10 }}>
                <TouchableOpacity
              onPress={() => this.props.navigation.goBack()}
             >
             <Ionicons name="md-arrow-back" size={24}  />
             </TouchableOpacity>
           </View>
-                <Text style={styles.title}>הרשמה</Text>
+          <View>
+          <Image
+            source={require("../assets/smalllogo.png")}
+            style={styles.cardImage}
+            resizeMode="cover"
+          />
+        </View>
 
                 <TextInput
                   style={styles.input}
@@ -335,6 +342,10 @@ const styles = StyleSheet.create({
   },
   registerBtn: {
     color: "red"
+  },
+  cardImage: {
+    width: 240,
+    height: 130
   },
   genderRadio: {
     flexDirection: "row",
