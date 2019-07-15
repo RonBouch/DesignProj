@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Linking,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Image
 } from "react-native";
 import { WebBrowser } from "expo";
 
@@ -97,7 +98,15 @@ export default class Login extends React.Component {
       >
         <View style={styles.container}>
           <View style={styles.formContainer}>
-            <Text style={styles.title}>התחברות</Text>
+           
+          <View>
+          <Image
+            source={require("../assets/smalllogo.png")}
+            style={styles.cardImage}
+            resizeMode="cover"
+          />
+        </View>
+
             <TextInput
               style={styles.input}
               keyboardType="email-address"
@@ -163,6 +172,10 @@ const styles = StyleSheet.create({
   textMessage: {
     margin: 50,
     color: "red"
+  },
+  cardImage: {
+    width: 240,
+    height: 130
   },
   registerBtn: {
     color: "red"
