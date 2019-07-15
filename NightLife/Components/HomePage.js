@@ -20,7 +20,7 @@ export default class HomeMenuView extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-        <View>
+        <View style={{padding:20}}>
           <Image
             source={require("../assets/smalllogo.png")}
             style={styles.cardImage}
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     paddingTop: 60
   },
   cardImage: {
-    width: 240,
-    height: 130
+    width: 255,
+    height: 140
   },
   inner: {
     width: "80%",

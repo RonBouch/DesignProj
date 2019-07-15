@@ -227,7 +227,7 @@ export default class Public extends React.Component {
             <Input
               placeholder="כתובת האירוע"
               containerStyle={{ width: 300 }}
-              errorMessage="כתובת האירוע"
+              errorMessage="אנא הקלד את הכתובת המדוייקת של האירוע*"
               onChangeText={this.handleAddress}
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />

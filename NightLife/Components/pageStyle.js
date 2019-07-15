@@ -44,6 +44,7 @@ export default StyleSheet.create({
         color: 'pink'
     },
     formContainer: {
+        marginTop:10,
         flexDirection: 'column',
         flexWrap: 'wrap',
          paddingBottom: 10,
@@ -92,7 +93,7 @@ export default StyleSheet.create({
         
       },
       cardImage: {
-        width: 230,
+        width: 235,
         height:130,
         
         // padding:10,
