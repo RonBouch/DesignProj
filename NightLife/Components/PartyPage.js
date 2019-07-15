@@ -244,7 +244,7 @@ componentDidMount(){
       <View style={styles.Header}> 
 
      <View style={{marginTop:30,flexDirection:"column-reverse"}}>
-        <Button  onPress={()=>{this.props.navigation.navigate('HomeMenuView');}} success type="outline" icon={<Icon name='arrow-left' />}   />
+        <Button  onPress={() => this.props.navigation.goBack()} success type="outline" icon={<Icon name='arrow-left' />}   />
             <Text>חזרה</Text>
      </View>
      
@@ -287,39 +287,15 @@ componentDidMount(){
               }}
             >
             {markers}
-              <Marker
-                
+            <Marker
                 coordinate={{
                   latitude: this.state.latitude,
                   longitude: this.state.longitude
                 }}
-                onPress={()=>this.infoWindow()}
-              >
-              {this.state.show==true ?            
-              <View style={styles.card}>
-              <Image
-                source={require('../assets/party1.jpg')}
-                style={styles.cardImage}
-                resizeMode="cover"
+                title='my place:)'
+                description='here i am'
+                //image={require('../assets/icon.png')}  img for The Marker!!!
               />
-              <View>
-                <Text numberOfLines={1}>ma kore</Text>
-                <Text numberOfLines={1} >
-                  ma koreeee
-                </Text>
-              </View>
-            </View>
-            :console.log('no')}
-
-              {/* <MapView.Callout style={{flexDirection:'column-reverse',width:100,height:200}}>
-              <View>
-              <Image
-                    source={{uri: '../assets/icon.png', width: 50, height: 50}}>
-                  </Image>
-              </View>
-               </MapView.Callout> */}
-             
-              </Marker>
 
             </MapView>
           </View>
