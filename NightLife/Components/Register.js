@@ -34,7 +34,7 @@ export default class Register extends React.Component {
     this.password = "";
     this.verifyPassword = "";
     this.birthday = "";
-    this.gender = "";
+    this.gender = "זכר";
     this.vaildForm = false;
     this.state = {
       message: "",
@@ -131,51 +131,55 @@ export default class Register extends React.Component {
   }
 
   register = () => {
-    //if (this.validateForm()) {
-      const data = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-        birthday: this.birthday,
-        gender: this.gender
-      };
-      console.log(data);
-      fetch(
-        "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/Register",
-        {
-          method: "post",
-          headers: new Headers({
-            "Content-Type": "application/Json;"
-          }),
-          body: JSON.stringify(data)
-        }
-      )
-        .then(res => {
-          console.log("res=", res);
-          return res.json();
-        })
-        .then(
-          result => {
-            console.log("fetch POST= ", result);
-            let u = JSON.parse(result.d);
-            console.log("u = " + u);
-            if (u == null) {
-              this.setState({
-                message: "הרשמה נכשלה"
-              });
-              return;
-            } else {
-              this.props.navigation.navigate("HomeMenuView");
-            }
-            console.log(result.d);
-            console.log(result);
-          },
-          error => {
-            console.log("err post=", error);
-          }
-        );
+    alert(date);
   };
+
+  // register = () => {
+  //   //if (this.validateForm()) {
+  //     const data = {
+  //       firstName: this.firstName,
+  //       lastName: this.lastName,
+  //       email: this.email,
+  //       password: this.password,
+  //       birthday: this.birthday,
+  //       gender: this.gender
+  //     };
+  //     console.log(data);
+  //     fetch(
+  //       "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/Register",
+  //       {
+  //         method: "post",
+  //         headers: new Headers({
+  //           "Content-Type": "application/Json;"
+  //         }),
+  //         body: JSON.stringify(data)
+  //       }
+  //     )
+  //       .then(res => {
+  //         console.log("res=", res);
+  //         return res.json();
+  //       })
+  //       .then(
+  //         result => {
+  //           console.log("fetch POST= ", result);
+  //           let u = JSON.parse(result.d);
+  //           console.log("u = " + u);
+  //           if (u == null) {
+  //             this.setState({
+  //               message: "הרשמה נכשלה"
+  //             });
+  //             return;
+  //           } else {
+  //             this.props.navigation.navigate("HomeMenuView");
+  //           }
+  //           console.log(result.d);
+  //           console.log(result);
+  //         },
+  //         error => {
+  //           console.log("err post=", error);
+  //         }
+  //       );
+  // };
 
   render() {
     return (
@@ -255,9 +259,7 @@ export default class Register extends React.Component {
               radio_props={radio_props}
               initial={0}
               style={styles.genderRadio}
-              onPress={(value) => {
-                this.setState({ value: value });
-              }}
+              onPress={this.changeGender}
             />
 
             <TouchableOpacity
