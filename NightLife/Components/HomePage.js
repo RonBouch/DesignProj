@@ -36,7 +36,7 @@ export default class HomeMenuView extends React.Component {
           <View style={styles.formContainer}>
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() => this.props.navigation.navigate("PartyPage")}
+              onPress={() => this.props.navigation.navigate("SearchPage")}
             >
               <Image
                 style={styles.icon}
@@ -45,7 +45,7 @@ export default class HomeMenuView extends React.Component {
                     "https://weezevent.com/wp-content/uploads/2019/01/12145054/organiser-soiree-1000x585.jpg"
                 }}
               />
-              <Text style={styles.info}>מסיבה</Text>
+              <Text style={styles.info}> חיפוש</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
