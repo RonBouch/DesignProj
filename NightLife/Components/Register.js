@@ -5,12 +5,21 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Keyboard,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView
 } from "react-native";
 import DatePicker from "react-native-datepicker";
 import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
 // import styles from './pageStyle';
+
+const DissmisKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 var radio_props = [
   {
@@ -38,7 +47,7 @@ export default class Register extends React.Component {
     this.vaildForm = false;
     this.state = {
       message: "",
-      date: new Date(),
+      date: "",
       formIsValid: false,
       errors: {}
     };
@@ -64,10 +73,6 @@ export default class Register extends React.Component {
     this.verifyPassword = e;
   };
 
-  changeBirthday = e => {
-    this.birthday = e;
-  };
-
   changeGender = e => {
     this.gender = e;
   };
@@ -80,17 +85,14 @@ export default class Register extends React.Component {
       formIsValid = false;
       errors["firstName"] = "* אנא הכנס שם פרטי";
     }
-
     if (this.lastName == "") {
       formIsValid = false;
       errors["lastName"] = "* אנא הכנס שם משפחה";
     }
-
     if (!this.email) {
       formIsValid = false;
       errors["email"] = "* אנא הכנס כתובת מייל";
     }
-
     if (this.email != "") {
       let pattern1 = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
       if (!pattern1.test(this.email)) {
@@ -102,7 +104,6 @@ export default class Register extends React.Component {
       formIsValid = false;
       errors["password"] = "* אנא הכנס סיסמה ";
     }
-
     if (this.password != "") {
       let re = /^(?=.{4,})[a-zA-Z0-9_.-]*$/;
       let res = re.test(this.password);
@@ -111,17 +112,19 @@ export default class Register extends React.Component {
         errors["password"] = "* הכנס סיסמה בעלת 4 מספרים ואותיות";
       }
     }
-
     if (this.verifyPassword == "") {
       formIsValid = false;
       errors["verifyPassword"] = "* אנא אמת סיסמה";
     }
-
     if (this.verifyPassword != "") {
       if (this.verifyPassword != this.password) {
         formIsValid = false;
-        errors["verifyPassword"] = "הסיסמה אינה זהה";
+        errors["verifyPassword"] = "* הסיסמה אינה זהה";
       }
+    }
+    if (!this.state.date) {
+      formIsValid = false;
+      errors["birthday"] = "* אנא הכנס תאריך לידה";
     }
 
     this.setState({
@@ -137,7 +140,7 @@ export default class Register extends React.Component {
         lastName: this.lastName,
         email: this.email,
         password: this.password,
-        birthday: this.birthday,
+        birthday: this.state.date,
         gender: this.gender
       };
       console.log(data);
@@ -175,8 +178,14 @@ export default class Register extends React.Component {
             console.log("err post=", error);
           }
         );
+<<<<<<< HEAD
   };
   }
+=======
+    }
+  };
+
+>>>>>>> 82fa6737eef17f2e2dd89a715f1a3f70c234b952
   render() {
     return (
       <ImageBackground
@@ -185,71 +194,78 @@ export default class Register extends React.Component {
       >
         <View style={styles.container}>
           <View style={styles.formContainer}>
-            <Text style={styles.title}>הרשמה</Text>
+            <DissmisKeyboard>
+              <KeyboardAvoidingView
+                keyboardVerticalOffset="-30"
+                behavior="position"
+              >
+                <Text style={styles.title}>הרשמה</Text>
 
-            <TextInput
-              style={styles.input}
-              placeholder="שם פרטי"
-              onChangeText={this.changeFirstName}
-            />
+                <TextInput
+                  style={styles.input}
+                  placeholder="שם פרטי"
+                  onChangeText={this.changeFirstName}
+                />
 
-            <TextInput
-              style={styles.input}
-              placeholder="שם משפחה"
-              onChangeText={this.changeLastName}
-            />
+                <TextInput
+                  style={styles.input}
+                  placeholder="שם משפחה"
+                  onChangeText={this.changeLastName}
+                />
 
-            <TextInput
-              style={styles.input}
-              keyboardType="email-address"
-              placeholder="אמייל"
-              onChangeText={this.changeEmail}
-            />
+                <TextInput
+                  style={styles.input}
+                  keyboardType="email-address"
+                  placeholder="אמייל"
+                  onChangeText={this.changeEmail}
+                />
 
-            <TextInput
-              style={styles.input}
-              secureTextEntry={true}
-              placeholder="סיסמא"
-              onChangeText={this.changePassword}
-            />
+                <TextInput
+                  style={styles.input}
+                  secureTextEntry={true}
+                  placeholder="סיסמא"
+                  onChangeText={this.changePassword}
+                />
 
-            <TextInput
-              style={styles.input}
-              secureTextEntry={true}
-              placeholder="אימות סיסמא"
-              onChangeText={this.changeVerifyPassword}
-            />
+                <TextInput
+                  style={styles.input}
+                  secureTextEntry={true}
+                  placeholder="אימות סיסמא"
+                  onChangeText={this.changeVerifyPassword}
+                />
 
-            <DatePicker
-              style={{ width: 200, margin: 10 }}
-              date={this.state.date}
-              mode="date"
-              placeholder="יום הולדת"
-              format="DD-MM-YYYY"
-              minDate={
-                new Date().getDate() +
-                "-" +
-                (new Date().getMonth() + 1) +
-                "-" +
-                (new Date().getFullYear() - 120)
-              }
-              maxDate={new Date()}
-              customStyles={{
-                dateIcon: {
-                  position: "absolute",
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
-                }
-                // ... You can check the source to find the other keys.
-              }}
-              onDateChange={date => {
-                this.setState({ date: date });
-              }}
-            />
+                <DatePicker
+                  style={{ width: 200, margin: 10 }}
+                  date={this.state.date}
+                  mode="date"
+                  placeholder="יום הולדת"
+                  format="DD-MM-YYYY"
+                  minDate={
+                    new Date().getDate() +
+                    "-" +
+                    (new Date().getMonth() + 1) +
+                    "-" +
+                    (new Date().getFullYear() - 120)
+                  }
+                  maxDate={new Date()}
+                  customStyles={{
+                    dateIcon: {
+                      position: "absolute",
+                      left: 0,
+                      top: 4,
+                      marginLeft: 0
+                    },
+                    dateInput: {
+                      marginLeft: 36
+                    }
+                    // ... You can check the source to find the other keys.
+                  }}
+                  onDateChange={date => {
+                    this.setState({ date: date });
+                  }}
+                />
+              </KeyboardAvoidingView>
+            </DissmisKeyboard>
 
             <RadioForm
               radio_props={radio_props}
@@ -270,7 +286,8 @@ export default class Register extends React.Component {
                 this.state.errors.lastName ||
                 this.state.errors.email ||
                 this.state.errors.password ||
-                this.state.errors.verifyPassword}
+                this.state.errors.verifyPassword ||
+                this.state.errors.birthday}
             </Text>
           </View>
         </View>
