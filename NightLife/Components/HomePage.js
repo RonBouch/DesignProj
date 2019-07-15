@@ -50,7 +50,7 @@ export default class HomeMenuView extends React.Component {
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() => this.props.navigation.navigate("Publish")}
+              onPress={() => this.props.navigation.navigate("PublishPage")}
             >
               <Image
                 style={styles.icon}
@@ -97,7 +97,7 @@ export default class HomeMenuView extends React.Component {
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() => this.props.navigation.navigate("Login")}
+              onPress={() => this.props.navigation.navigate("LoginPage")}
             >
               <Image
                 style={styles.icon}

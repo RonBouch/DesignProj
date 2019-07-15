@@ -75,7 +75,7 @@ export default class Login extends React.Component {
               });
               return;
             } else {
-              this.props.navigation.navigate("HomeMenuView");
+              this.props.navigation.navigate("HomePage");
             }
             console.log(result.d);
             console.log(result);
@@ -87,7 +87,7 @@ export default class Login extends React.Component {
     }
   };
   RegisterBtn = () => {
-    this.props.navigation.navigate("Register");
+    this.props.navigation.navigate("RegisterPage");
   };
   render() {
     return (
