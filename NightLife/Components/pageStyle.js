@@ -10,7 +10,7 @@ export default StyleSheet.create({
         borderRadius: 10,
     },
     Header: {
-        flex: 2,
+        flex:2,
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: 40,

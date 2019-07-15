@@ -198,17 +198,19 @@ export default class Public extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-        <View style={styles.Header}>
-          <View style={{ marginTop: 30, flexDirection: "column-reverse" }}>
-            <Button
-               onPress={() => this.props.navigation.goBack()}
-              success
-              type="outline"
-              icon={<Icon name="arrow-back" />}
-            />
-            <Text>חזרה</Text>
+       <View style={{ marginTop:10,backgroundColor: 'rgba(255,255,255,.3)',padding:10 }}>
+               <TouchableOpacity
+             onPress={() => this.props.navigation.goBack()}
+            >
+            <Ionicons name="md-arrow-back" size={28}  />
+            </TouchableOpacity>
           </View>
-
+        <View style={styles.Header}>
+          <Image
+            source={require("../assets/smalllogo.png")}
+            style={styles.cardImage}
+            resizeMode="cover"
+          />
           <View>
             <Input
               placeholder="שם האירוע"
