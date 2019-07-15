@@ -2,6 +2,7 @@ import React from "react";
 import {
   Text,
   View,
+  Button,
   TextInput,
   StyleSheet,
   TouchableOpacity,
@@ -10,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView
 } from "react-native";
+import { Icon } from "react-native-elements";
 import DatePicker from "react-native-datepicker";
 import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
@@ -43,7 +45,7 @@ export default class Register extends React.Component {
     this.password = "";
     this.verifyPassword = "";
     this.birthday = "";
-    this.gender = "זכר";
+    this.gender = "";
     this.vaildForm = false;
     this.state = {
       message: "",
@@ -126,6 +128,10 @@ export default class Register extends React.Component {
       formIsValid = false;
       errors["birthday"] = "* אנא הכנס תאריך לידה";
     }
+    if (!this.gender) {
+      formIsValid = false;
+      errors["gender"] = "* אנא בחר מגדר";
+    }
 
     this.setState({
       errors: errors
@@ -187,6 +193,7 @@ export default class Register extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
+        
         <View style={styles.container}>
           <View style={styles.formContainer}>
             <DissmisKeyboard>
@@ -264,7 +271,7 @@ export default class Register extends React.Component {
 
             <RadioForm
               radio_props={radio_props}
-              initial={0}
+              initial={null}
               style={styles.genderRadio}
               onPress={this.changeGender}
             />
@@ -282,7 +289,8 @@ export default class Register extends React.Component {
                 this.state.errors.email ||
                 this.state.errors.password ||
                 this.state.errors.verifyPassword ||
-                this.state.errors.birthday}
+                this.state.errors.birthday ||
+                this.state.errors.gender}
             </Text>
           </View>
         </View>
