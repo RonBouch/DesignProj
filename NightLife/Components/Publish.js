@@ -216,7 +216,7 @@ export default class Public extends React.Component {
             <Input
               placeholder="ללשם האירוע"
               containerStyle={{ width: 300 }}
-              errorMessage="שם האירוע"
+              errorMessage="שם האירועk"
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
               onChangeText={e => this.setState({ eventname: e })}
             />
