@@ -3,15 +3,13 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   StyleSheet,
-  Linking,
   TouchableOpacity,
   ImageBackground,
   Image
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { WebBrowser } from "expo";
+//import styles from './pageStyle';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -216,55 +214,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "center",
     marginTop: 30
+  },
+  buttonText: {
+    color: "white"
   }
 });
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#3498db',
-//     padding: 20,
-//   },
-//   formContainer: {
-//     paddingBottom: 150,
-//   },
-//   input: {
-//     height: 40,
-//     backgroundColor: 'rgba(255,255,255,0.7)',
-//     //marginTop: 30,
-//     marginBottom: 20,
-//     color: '#FFF',
-//     paddingHorizontal: 10,
-//   },
-//   logoContainer: {
-//     alignItems: 'center',
-//     flexGrow: 1,
-//     justifyContent: 'center',
-//   },
-//   logo: {
-//     width: 200,
-//     height: 200
-//   },
-//   buttonContainer: {
-//     backgroundColor: '#2980b9',
-//     paddingVertical: 10,
-//     width: 240,
-//     height: 45,
-//     borderRadius: 200,
-//     alignItems: 'center',
-//     flexGrow: 1,
-//     justifyContent: 'center',
-//     marginLeft: 60,
-//   },
-//   buttonContainerFB: {
-//     backgroundColor: '#2980b9',
-//     paddingVertical: 10,
-//     width: 240,
-//     height: 45,
-//     borderRadius: 200,
-//     alignItems: 'center',
-//     flexGrow: 1,
-//     justifyContent: 'center',
-//     marginLeft: 60,
-//     marginTop: 30
-//   },
-// });
+
