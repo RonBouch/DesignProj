@@ -178,14 +178,8 @@ export default class Register extends React.Component {
             console.log("err post=", error);
           }
         );
-<<<<<<< HEAD
   };
   }
-=======
-    }
-  };
-
->>>>>>> 82fa6737eef17f2e2dd89a715f1a3f70c234b952
   render() {
     return (
       <ImageBackground
