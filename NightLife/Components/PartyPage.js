@@ -241,14 +241,19 @@ componentDidMount(){
 
         return (
       <ImageBackground source={require('../assets/backGroung.jpg')}style={styles.container}>
-      <View style={styles.Header}> 
-
-     <View style={{marginTop:30,flexDirection:"column-reverse"}}>
-        <Button  onPress={() => this.props.navigation.goBack()} success type="outline" icon={<Icon name='arrow-left' />}   />
-            <Text>חזרה</Text>
+        <View style={{marginTop:30,  backgroundColor: 'rgba(255,255,255,.3)'}}>
+        <TouchableOpacity  onPress={() => this.props.navigation.goBack()} >
+        <Icon name='arrow-left'size={24} />
+        </TouchableOpacity>
      </View>
-     
-     
+      <View style={styles.Header}> 
+      <View style={{alignItems:'center'}}>
+          <Image
+            source={require("../assets/smalllogo.png")}
+            style={styles.cardImage}
+            resizeMode="cover"
+          />
+        </View> 
     
            <View style={styles.formContainer}>
              
@@ -316,7 +321,7 @@ componentDidMount(){
     <ImageBackground source={require('../assets/5.jpg')}style={{width:'100%',height:'100%'}}>
     <View style={{backgroundColor: 'rgba(255,255,255,.6)',height:'100%'}}>
               <View style={{flexDirection:'row-reverse'}}>
-               <View><Image source={{uri:'http://ruppinmobile.tempdomain.co.il/site11/DiscoBall.jpg'}} style={styles.cardImage} resizeMode="cover" /></View>
+               <View><Image source={{uri:'http://ruppinmobile.tempdomain.co.il/site11/DiscoBall.jpg'}} style={{width:130,height:100}} resizeMode="cover" /></View>
               <View style={{flex:2}}></View>
               <View><Text style={{fontSize:18,fontWeight:"bold",flex:2}}>{this.state.place.Address}</Text>
               <Text style={{fontSize:16,fontWeight:"bold",flex:2}}>שם המקום:{this.state.place.EventName}</Text></View>           

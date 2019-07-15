@@ -3,9 +3,11 @@ import  { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        // alignItems: 'center',
         justifyContent: 'center',
-        fontSize: 40
+        fontSize: 40,
+        paddingVertical: 10,
+        borderRadius: 10,
     },
     Header: {
         flex: 2,
@@ -13,9 +15,9 @@ export default StyleSheet.create({
         justifyContent: 'center',
         fontSize: 40,
         backgroundColor: 'rgba(255,255,255,.3)',
-        paddingVertical: 10,
-        borderRadius: 10,
+        
     },
+  
     input: {
         borderRadius: 10,
         fontSize: 10,
@@ -87,10 +89,11 @@ export default StyleSheet.create({
         backgroundColor:'gray',
         position: 'absolute',
         bottom: -40,
+        
       },
       cardImage: {
-        width: 130,
-        height:100,
+        width: 230,
+        height:130,
         
         // padding:10,
         // flex:3
