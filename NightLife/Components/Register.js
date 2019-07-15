@@ -3,21 +3,14 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
   ImageBackground
 } from "react-native";
 import DatePicker from "react-native-datepicker";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
-import { WebBrowser } from "expo";
+import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
 // import styles from './pageStyle';
-
 
 var radio_props = [
   {
@@ -137,29 +130,8 @@ export default class Register extends React.Component {
     return formIsValid;
   }
 
-  // validation = () => {
-  //   if (this.firstName == "") {
-  //     this.setState({ message: "אנא הכנס שם פרטי" });
-  //   } else if (this.lastName == "") {
-  //     this.setState({ message: "אנא הכנס שם משפחה" });
-  //   } else if (this.email == "") {
-
-  //     this.setState({ message: "אנא הכנס כתובת אימייל" });
-  //   } else if (this.password == "") {
-  //     this.setState({ message: "אנא הכנס סיסמא" });
-  //   } else if (
-  //     this.verifyPassword == "" ||
-  //     this.verifyPassword != this.password
-  //   ) {
-  //     this.setState({ message: "אנא אמת את סיסמתך" });
-  //   } else {
-  //     this.vaildForm = true;
-  //     this.register();
-  //   }
-  // };
-
   register = () => {
-    if (this.validateForm()) {
+    //if (this.validateForm()) {
       const data = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -203,12 +175,8 @@ export default class Register extends React.Component {
             console.log("err post=", error);
           }
         );
-    }
   };
 
-  LoginBtn = () => {
-    this.props.navigation.navigate("Login");
-  };
   render() {
     return (
       <ImageBackground
@@ -224,14 +192,12 @@ export default class Register extends React.Component {
               placeholder="שם פרטי"
               onChangeText={this.changeFirstName}
             />
-            {/* <Text style={{ color: 'red' }}>{this.state.errors.firstName}</Text> */}
 
             <TextInput
               style={styles.input}
               placeholder="שם משפחה"
               onChangeText={this.changeLastName}
             />
-            {/* <Text style={{ color: 'red' }}>{this.state.errors.lastName}</Text> */}
 
             <TextInput
               style={styles.input}
@@ -239,7 +205,6 @@ export default class Register extends React.Component {
               placeholder="אמייל"
               onChangeText={this.changeEmail}
             />
-            {/* <Text style={{ color: 'red' }}>{this.state.errors.email}</Text> */}
 
             <TextInput
               style={styles.input}
@@ -247,7 +212,6 @@ export default class Register extends React.Component {
               placeholder="סיסמא"
               onChangeText={this.changePassword}
             />
-            {/* <Text style={{ color: 'red' }}>{this.state.errors.password}</Text> */}
 
             <TextInput
               style={styles.input}
@@ -255,7 +219,6 @@ export default class Register extends React.Component {
               placeholder="אימות סיסמא"
               onChangeText={this.changeVerifyPassword}
             />
-            {/* <Text style={{ color: 'red' }}>{this.state.errors.verifyPassword}</Text> */}
 
             <DatePicker
               style={{ width: 200, margin: 10 }}
@@ -292,22 +255,18 @@ export default class Register extends React.Component {
               radio_props={radio_props}
               initial={0}
               style={styles.genderRadio}
-              onPress={value => {
+              onPress={(value) => {
                 this.setState({ value: value });
               }}
             />
 
-            {/* <Button
-          title="הרשם"
-           style={styles.buttonContainer}
-           onPress={this.validation}
-         /> */}
             <TouchableOpacity
               style={styles.buttonContainer}
               onPress={this.register}
             >
               <Text>הרשם</Text>
             </TouchableOpacity>
+
             <Text style={styles.textMessage}>
               {this.state.errors.firstName ||
                 this.state.errors.lastName ||
@@ -385,4 +344,3 @@ const styles = StyleSheet.create({
     marginTop: 30
   }
 });
-
