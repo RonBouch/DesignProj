@@ -2,7 +2,6 @@ import React from "react";
 import {
   Text,
   View,
-  Button,
   TextInput,
   StyleSheet,
   TouchableOpacity,
@@ -12,7 +11,6 @@ import {
   KeyboardAvoidingView,
   Image
 } from "react-native";
-import { Icon } from "react-native-elements";
 import DatePicker from "react-native-datepicker";
 import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
@@ -177,7 +175,7 @@ export default class Register extends React.Component {
               });
               return;
             } else {
-              this.props.navigation.navigate("HomeMenuView");
+              this.props.navigation.navigate("HomePage");
             }
             console.log(result.d);
             console.log(result);
