@@ -20,9 +20,11 @@ const StackNav = createStackNavigator(
   {    
     HomeMenuView: HomeMenuView,
 
+    PartyPage: PartyPage,
+
+
     Register: Register,
 
-    PartyPage: PartyPage,
 
     Login: Login,
 

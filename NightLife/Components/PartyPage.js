@@ -244,7 +244,7 @@ componentDidMount(){
       <View style={styles.Header}> 
 
      <View style={{marginTop:30,flexDirection:"column-reverse"}}>
-        <Button  onPress={()=>{this.props.navigation.navigate('HomeMenuView');}} success type="outline" icon={<Icon name='arrow-left' />}   />
+        <Button  onPress={() => this.props.navigation.goBack()} success type="outline" icon={<Icon name='arrow-left' />}   />
             <Text>חזרה</Text>
      </View>
      
