@@ -99,14 +99,13 @@ export default class Login extends React.Component {
       >
         <View style={styles.container}>
           <View style={styles.formContainer}>
-           
-          <View>
-          <Image
-            source={require("../assets/smalllogo.png")}
-            style={styles.cardImage}
-            resizeMode="cover"
-          />
-        </View>
+            <View>
+              <Image
+                source={require("../assets/smalllogo.png")}
+                style={styles.cardImage}
+                resizeMode="cover"
+              />
+            </View>
 
             <TextInput
               style={styles.input}
@@ -140,11 +139,7 @@ export default class Login extends React.Component {
               style={styles.buttonContainerFB}
             >
               <Text style={styles.buttonText}>
-                <Ionicons
-                  name="logo-facebook"
-                  size={18}
-                  style={styles.icon}
-                />
+                <Ionicons name="logo-facebook" size={18} style={styles.icon} />
                 {"  "}
                 FaceBook
               </Text>
@@ -212,7 +207,7 @@ const styles = StyleSheet.create({
     paddingBottom: 150
   },
   buttonContainerFB: {
-    backgroundColor: "gray",
+    backgroundColor: "blue",
     paddingVertical: 10,
     width: 240,
     height: 45,
@@ -271,9 +266,5 @@ const styles = StyleSheet.create({
 //     justifyContent: 'center',
 //     marginLeft: 60,
 //     marginTop: 30
-//   },
-//   buttonText: {
-//     textAlign: 'center',
-//     color: '#FFFFFF',
 //   },
 // });
