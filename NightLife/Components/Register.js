@@ -131,7 +131,6 @@ export default class Register extends React.Component {
   }
 
   register = () => {
-<<<<<<< HEAD
     if (this.validateForm()) {
       const data = {
         firstName: this.firstName,
@@ -178,58 +177,6 @@ export default class Register extends React.Component {
         );
   };
   }
-=======
-    alert(date);
-  };
-
-  // register = () => {
-  //   //if (this.validateForm()) {
-  //     const data = {
-  //       firstName: this.firstName,
-  //       lastName: this.lastName,
-  //       email: this.email,
-  //       password: this.password,
-  //       birthday: this.birthday,
-  //       gender: this.gender
-  //     };
-  //     console.log(data);
-  //     fetch(
-  //       "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/Register",
-  //       {
-  //         method: "post",
-  //         headers: new Headers({
-  //           "Content-Type": "application/Json;"
-  //         }),
-  //         body: JSON.stringify(data)
-  //       }
-  //     )
-  //       .then(res => {
-  //         console.log("res=", res);
-  //         return res.json();
-  //       })
-  //       .then(
-  //         result => {
-  //           console.log("fetch POST= ", result);
-  //           let u = JSON.parse(result.d);
-  //           console.log("u = " + u);
-  //           if (u == null) {
-  //             this.setState({
-  //               message: "הרשמה נכשלה"
-  //             });
-  //             return;
-  //           } else {
-  //             this.props.navigation.navigate("HomeMenuView");
-  //           }
-  //           console.log(result.d);
-  //           console.log(result);
-  //         },
-  //         error => {
-  //           console.log("err post=", error);
-  //         }
-  //       );
-  // };
-
->>>>>>> 9ccfff03b8a9ea58a92a2420d906c9d9b88460b2
   render() {
     return (
       <ImageBackground

@@ -265,16 +265,7 @@ componentDidMount(){
            <Text>חפשו עכשיו!</Text>
         </TouchableOpacity>
       
-          <CheckBox
-          center   
-  title=' מועדפים'
-  iconRight
-  iconType='material'
-  checkedIcon='done'
-  uncheckedIcon='add'
-  checkedColor='yellow'
-  checked={this.state.checkedB}
-  onPress={() => this.setState({checkedB: !this.state.checkedB})}/>
+         
         </View>
 
         <View style={styles.Content}>
