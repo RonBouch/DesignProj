@@ -112,7 +112,6 @@ export default class Login extends React.Component {
                 resizeMode="cover"
               />
             </View>
-
             <View style={styles.loginForm}>
               <TextInput
                 style={styles.input}
@@ -217,7 +216,8 @@ const styles = StyleSheet.create({
     color: "red"
   },
   registerButton: {
-    backgroundColor: "rgba(255,255,150,.9)",
+    backgroundColor: "rgba(255,255,0,.7)",
+    borderRadius: 200,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
@@ -227,14 +227,16 @@ const styles = StyleSheet.create({
     paddingBottom: 150
   },
   faceBookButton: {
-    backgroundColor: "blue",
+    backgroundColor: "rgba(0,0,255,.7)",
+    borderRadius: 200,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30
   },
   googleButton: {
-    backgroundColor: "green",
+    backgroundColor: "rgba(0,255,0,.7)",
+    borderRadius: 200,
     height: 45,
     alignItems: "center",
     justifyContent: "center",

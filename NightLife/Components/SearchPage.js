@@ -254,14 +254,14 @@ export default class PartyPage extends React.Component {
           </View>
 
           <View style={styles.formContainer}>
-            <Text>אז לאן אתה יוצא ?</Text>
+            <Text style={{fontSize:20}}>לאן יוצאים... </Text>
 
             <View>
               <TextInput
                 style={styles.input}
                 onChangeText={this.handleAddress}
                 value={this.state.Address}
-                placeholder="City..Street..Number"
+                placeholder="הכנס כתובת"
               />
             </View>
 
@@ -269,7 +269,7 @@ export default class PartyPage extends React.Component {
               style={styles.buttonContainer}
               onPress={this.handleSubmit}
             >
-              <Text>חפשו עכשיו!</Text>
+              <Text style={{fontSize:15}}>חפש לי מסיבה</Text>
             </TouchableOpacity>
           </View>
 

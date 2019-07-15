@@ -19,13 +19,14 @@ export default StyleSheet.create({
     },
   
     input: {
+        backgroundColor: "rgba(255,255,255,.5)",
         borderRadius: 10,
-        fontSize: 10,
+        width:200,
         height: 40,
-        width: 200,
         textAlign: "center",
-        borderColor: "black",
+        borderColor: "gray",
         borderWidth: 2,
+        margin: 10
       },
     Content: {
         flex: 4,
@@ -44,7 +45,7 @@ export default StyleSheet.create({
         color: 'pink'
     },
     formContainer: {
-        marginTop:10,
+        marginTop:20,
         flexDirection: 'column',
         flexWrap: 'wrap',
          paddingBottom: 10,
@@ -64,8 +65,9 @@ export default StyleSheet.create({
         flexDirection:'row-reverse',
      },
     buttonContainer: {
-        backgroundColor: 'rgba(255,255,255,.9)',
-        paddingVertical: 27,
+        backgroundColor: 'rgba(200,50,100,.7)',
+        paddingVertical: 15,
+        width:120,
         borderRadius: 110,
         alignItems: 'center',
         // padding:20,

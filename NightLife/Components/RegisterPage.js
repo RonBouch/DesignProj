@@ -15,7 +15,6 @@ import DatePicker from "react-native-datepicker";
 import RadioForm from "react-native-simple-radio-button";
 import { Ionicons } from "@expo/vector-icons";
 
-
 const DissmisKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     {children}
@@ -192,7 +191,6 @@ export default class Register extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-        
         <View style={styles.container}>
           <View style={styles.formContainer}>
             <DissmisKeyboard>
@@ -200,20 +198,20 @@ export default class Register extends React.Component {
                 keyboardVerticalOffset="-30"
                 behavior="position"
               >
-               <View style={{ marginTop:-10 }}>
-               <TouchableOpacity
-             onPress={() => this.props.navigation.goBack()}
-            >
-            <Ionicons name="md-arrow-back" size={28}  />
-            </TouchableOpacity>
-          </View>
-          <View>
-          <Image
-            source={require("../assets/smalllogo.png")}
-            style={styles.cardImage}
-            resizeMode="cover"
-          />
-        </View>
+                <View style={{ marginTop: -10 }}>
+                  <TouchableOpacity
+                    onPress={() => this.props.navigation.goBack()}
+                  >
+                    <Ionicons name="md-arrow-back" size={28} />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <Image
+                    source={require("../assets/smalllogo.png")}
+                    style={styles.cardImage}
+                    resizeMode="cover"
+                  />
+                </View>
 
                 <TextInput
                   style={styles.input}
@@ -249,7 +247,11 @@ export default class Register extends React.Component {
                 />
 
                 <DatePicker
-                  style={{ width: 200, margin: 10 }}
+                  style={{
+                    width: 200,
+                    margin: 10,
+                    backgroundColor: "rgba(255,255,255,.5)"
+                  }}
                   date={this.state.date}
                   mode="date"
                   placeholder="יום הולדת"
@@ -289,7 +291,7 @@ export default class Register extends React.Component {
             />
 
             <TouchableOpacity
-              style={styles.buttonContainer}
+              style={styles.registerButton}
               onPress={this.register}
             >
               <Text>הרשם</Text>
@@ -323,15 +325,13 @@ const styles = StyleSheet.create({
     margin: 30
   },
   input: {
+    backgroundColor: "rgba(255,255,255,.5)",
     borderRadius: 10,
-    fontSize: 10,
     height: 40,
-    width: 200,
     textAlign: "center",
     borderColor: "gray",
     borderWidth: 2,
-    margin: 10,
-    color: "black"
+    margin: 10
   },
   textMessage: {
     margin: 50,
@@ -345,23 +345,22 @@ const styles = StyleSheet.create({
     height: 130
   },
   genderRadio: {
+    backgroundColor: "rgba(255,255,255,.5)",
     flexDirection: "row",
-    margin: 10
+    margin: 10,
+    justifyContent: "center"
   },
   textMessage: {
     margin: 10,
     color: "red"
   },
-  buttonContainer: {
-    backgroundColor: "gray",
-    paddingVertical: 10,
-    width: 240,
-    height: 45,
+  registerButton: {
+    backgroundColor: "rgba(255,255,0,.7)",
     borderRadius: 200,
+    height: 45,
     alignItems: "center",
-    flexGrow: 1,
     justifyContent: "center",
-    marginTop: 20
+    marginTop: 10
   },
   formContainer: {
     paddingBottom: 150
