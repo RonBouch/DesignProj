@@ -164,13 +164,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: "rgba(255,255,255,.3)",
-    borderRadius: 140,
-
+    borderRadius: 200,
     alignItems: "center",
     flexGrow: 1,
     justifyContent: "center",
     margin: 10,
-    marginTop: 40
+    marginTop: 20
   },
   formContainer: {
     flexDirection: "row",
