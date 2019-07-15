@@ -214,7 +214,7 @@ export default class Public extends React.Component {
           <View>
             <View>
             <Input
-              placeholder="שם האירוע"
+              placeholder="ללשם האירוע"
               containerStyle={{ width: 300 }}
               errorMessage="שם האירוע"
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
