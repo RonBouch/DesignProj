@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   ImageBackground,
+  Linking
 } from "react-native";
 import styles from "./SearchPageStyle";
 import { CheckBox } from "react-native-elements";
@@ -174,6 +175,10 @@ export default class PartyPage extends React.Component {
       });
     }
   };
+  // _pressCall=()=>{
+  //   const url='tel:'+place.phoneNumberEvent
+  //   Linking.openURL(url)
+  // }
   render() {
     let markers = [];
 
@@ -366,7 +371,7 @@ export default class PartyPage extends React.Component {
                       <View style={{ flex: 1 }} />
                       <View style={{ flex: 2, marginTop: 10 }}>
                       {this.state.showNumber!=true?  <TouchableOpacity
-                          onPress={() => {this.setState({showNumber:true}) }}
+                          onPress={this._pressCall}
                           success
                           type="outline"
                         >

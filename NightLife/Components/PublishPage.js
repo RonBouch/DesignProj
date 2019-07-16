@@ -15,9 +15,9 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   Dimensions,
   ImageBackground,
+  TextInput ,
   Image,
   TouchableOpacity
 } from "react-native";
@@ -222,6 +222,7 @@ export default class Public extends React.Component {
           />
         </View>
         <View style={styles.Header}>
+        
           <View>
             <Input
               placeholder="שם האירוע"
@@ -245,13 +246,21 @@ export default class Public extends React.Component {
           <View>
             <Input
               containerStyle={{ width: 300 }}
-              placeholder="ספר על האירוע"
+              placeholder="טלפון להזמנות"
               errorStyle={{ color: "red" }}
-              errorMessage="*תן פרטים על האירוע"
+              errorMessage="*טלפון להזמנת מקום"
               onChangeText={e => this.setState({ eventabout: e })}
-              rightIcon={<Icon name="account-circle" size={24} color="black" />}
+              rightIcon={<Icon name="phone" size={24} color="black" />}
             />
           </View>
+          <TextInput
+            style={styles.TextInputStyleClass}
+            underlineColorAndroid="transparent"
+            placeholder={"ספר על האירוע"}
+            placeholderTextColor={"#9E9E9E"}
+            numberOfLines={10}
+            multiline={true}
+            />
 
           <View style={styles.addImage}>
             <TouchableOpacity onPress={this.openCamera} style={styles.icon}>

@@ -17,7 +17,16 @@ export default StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,.3)',
         
     },
-  
+    TextInputStyleClass:{
+
+        height: 80,
+        borderWidth: 1,
+        borderColor: '#9E9E9E',
+        borderRadius: 10 ,
+        backgroundColor: "rgba(255,255,255,.5)",
+        width: 300
+         
+        },
     input: {
         backgroundColor: "rgba(255,255,255,.5)",
         borderRadius: 10,
@@ -26,7 +35,9 @@ export default StyleSheet.create({
         textAlign: "center",
         borderColor: "gray",
         borderWidth: 2,
-        margin: 10
+        margin: 10,
+
+
       },
     Content: {
         flex: 4,
