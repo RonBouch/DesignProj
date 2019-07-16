@@ -10,7 +10,6 @@ import styles from "./SearchPageStyle";
 import { Location, Permissions, ImagePicker } from "expo";
 // import CheckBox from 'react-native-check-box'
 import { Icon } from "react-native-elements";
-import { ActionButton } from "react-native-material-ui";
 import { Ionicons } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -112,8 +111,17 @@ export default class Public extends React.Component {
         (await Location.geocodeAsync(address)) == "" ||
         (await Location.geocodeAsync(address)) == null
       ) {
-        alert("Invalid city");
+        this.setState({
+          resLabel:"*עיר או רחוב לא תקינים, נסה שוב!"
+        })
         return;
+      }
+      if(this.state.eventabout==""||this.state.eventname==""){
+        this.setState({
+          resLabel:'*אנא מלא את כל השדות!.'
+        })
+        return;
+
       }
       let geocode = await Location.geocodeAsync(address);
       console.log("geocode  = " + geocode[0].latitude);
@@ -164,7 +172,7 @@ export default class Public extends React.Component {
               });
               return;
             } else {
-              this.props.navigation.navigate("HomeMenuView");
+              this.props.navigation.navigate("HomePage");
             }
           },
           error => {
@@ -172,7 +180,9 @@ export default class Public extends React.Component {
           }
         );
     } else {
-      alert("Invalid city");
+      this.setState({
+        resLabel:'*אנא מלא את כל השדות'
+      })
     }
   };
 
@@ -182,16 +192,10 @@ export default class Public extends React.Component {
     if (address.length !== 0) {
       valid = true;
     }
+
     return valid;
   }
-  btnPublic = () => {
-    //   if(this.handleSubmit()){
-    //       alert('Yessss')
-    //   }
-    //   else{
-    //       alert('No')
-    //   }
-  };
+
   render() {
     return (
       <ImageBackground
@@ -205,28 +209,30 @@ export default class Public extends React.Component {
             <Ionicons name="md-arrow-back" size={28}  />
             </TouchableOpacity>
           </View>
-        <View style={styles.Header}>
+          <View style={{alignItems:'center',backgroundColor: 'rgba(255,255,255,.3)'}}>
           <Image
             source={require("../assets/smalllogo.png")}
             style={styles.cardImage}
             resizeMode="cover"
           />
+          </View>
+        <View style={styles.Header}>
+         
           <View>
             <Input
               placeholder="שם האירוע"
               containerStyle={{ width: 300 }}
-              errorMessage="שם האירוע"
+              errorMessage="*ציין את שם האירוע המלא"
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
               onChangeText={e => this.setState({ eventname: e })}
             />
-            <Text style={{ color: "red" }}>{this.state.errors.fname}</Text>
           </View>
 
           <View>
             <Input
               placeholder="כתובת האירוע"
               containerStyle={{ width: 300 }}
-              errorMessage="כתובת האירוע"
+              errorMessage="*ציין את הכתובת המדוייקת של האירוע"
               onChangeText={this.handleAddress}
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />
@@ -237,7 +243,7 @@ export default class Public extends React.Component {
               containerStyle={{ width: 300 }}
               placeholder="ספר על האירוע"
               errorStyle={{ color: "red" }}
-              errorMessage="ספר על האירוע"
+              errorMessage="*תן פרטים על האירוע"
               onChangeText={e => this.setState({ eventabout: e })}
               rightIcon={<Icon name="account-circle" size={24} color="black" />}
             />
