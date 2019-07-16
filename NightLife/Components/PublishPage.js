@@ -52,7 +52,7 @@ export default class Public extends React.Component {
       longitude: -122.4324,
       eventname: "",
       eventabout: "",
-      img: "1"
+      img: "party3.jpg"
     };
   }
   handleAddress = e => {

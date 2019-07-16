@@ -175,10 +175,10 @@ export default class PartyPage extends React.Component {
       });
     }
   };
-  // _pressCall=()=>{
-  //   const url='tel:'+place.phoneNumberEvent
-  //   Linking.openURL(url)
-  // }
+  _pressCall=()=>{
+    const url='tel:'+this.state.place.EventPhone
+    Linking.openURL(url)
+  }
   render() {
     let markers = [];
 
@@ -342,7 +342,7 @@ export default class PartyPage extends React.Component {
                         <Image
                           source={{
                             uri:
-                              "http://ruppinmobile.tempdomain.co.il/site11/DiscoBall.jpg"
+                              "http://ruppinmobile.tempdomain.co.il/site11/image/"+this.state.place.Img
                           }}
                           style={{ width: 130, height: 100 }}
                           resizeMode="cover"
