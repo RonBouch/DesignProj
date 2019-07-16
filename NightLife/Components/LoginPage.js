@@ -221,7 +221,9 @@ const styles = StyleSheet.create({
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 30
+    marginTop: 30,
+    borderColor: "white",
+    borderWidth: 2
   },
   formContainer: {
     paddingBottom: 150
@@ -232,7 +234,9 @@ const styles = StyleSheet.create({
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 30
+    marginTop: 30,
+    borderColor: "white",
+    borderWidth: 2
   },
   googleButton: {
     backgroundColor: "rgba(0,255,0,.7)",
@@ -240,7 +244,9 @@ const styles = StyleSheet.create({
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 30
+    marginTop: 30,
+    borderColor: "white",
+    borderWidth: 2
   },
   buttonText: {
     color: "white"

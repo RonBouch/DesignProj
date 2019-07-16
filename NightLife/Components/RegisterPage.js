@@ -337,9 +337,6 @@ const styles = StyleSheet.create({
     margin: 50,
     color: "red"
   },
-  registerBtn: {
-    color: "red"
-  },
   cardImage: {
     width: 240,
     height: 130
@@ -360,7 +357,9 @@ const styles = StyleSheet.create({
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10
+    marginTop: 10,
+    borderColor: "white",
+    borderWidth: 2
   },
   formContainer: {
     paddingBottom: 150

@@ -72,6 +72,8 @@ export default StyleSheet.create({
         alignItems: 'center',
         // padding:20,
         marginTop:25,
+        borderColor: "white",
+        borderWidth: 2
        
         
 
