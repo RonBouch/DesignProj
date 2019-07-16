@@ -228,7 +228,7 @@ export default class Public extends React.Component {
             </Text>
           </View>
           <Text style={styles.text}>
-            באמצעות האפליקציה שפיתחנו, כל אדם יכול ל
+            באמצעות האפליקציה שפיתחנו, כל אדם יכול למצא מקום בילוי בקלות רבה
           </Text>
         </View>
       </ImageBackground>
@@ -250,9 +250,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: "black",
+    height:200,
   },
   paragraph:{
-    height:200,
+    height:250,
   },
   cardImage: {
     width: 235,
