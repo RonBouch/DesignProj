@@ -33,6 +33,7 @@ export default class PartyPage extends React.Component {
       places: null,
       show: false,
       pageToShow: null,
+      showNumber:false,
       checkedB: false,
       place: null
     };
@@ -162,12 +163,14 @@ export default class PartyPage extends React.Component {
     if (this.state.pageToShow == null || this.state.pageToShow != i) {
       this.setState({
         pageToShow: i,
-        place: p
+        place: p,
+        showNumber:false
       });
     } else {
       this.setState({
         pageToShow: null,
-        place: null
+        place: null,
+        showNumber:false
       });
     }
   };
@@ -359,20 +362,16 @@ export default class PartyPage extends React.Component {
                         מידע על האירוע : {this.state.place.EventAbout}{" "}
                       </Text>
                     </View>
-                    <View style={{ flexDirection: "row-reverse", bottom: -45 }}>
+                    <View style={{ flexDirection: "row-reverse", bottom:0 }}>
                       <View style={{ flex: 1 }} />
                       <View style={{ flex: 2, marginTop: 10 }}>
-                        <TouchableOpacity
-                          onPress={() => {
-                            <View>
-                              <Text>05555555</Text>
-                            </View>;
-                          }}
+                      {this.state.showNumber!=true?  <TouchableOpacity
+                          onPress={() => {this.setState({showNumber:true}) }}
                           success
                           type="outline"
                         >
                           <Icon name="phone" color="green" size={40} />
-                        </TouchableOpacity>
+                        </TouchableOpacity>:<Text style={{color:'blue',fontSize:18,marginLeft:30}}>0526666666</Text>}
                       </View>
                       <View>
                         <CheckBox
