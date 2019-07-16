@@ -4,24 +4,35 @@ import {
   ThemeProvider,
   Header,
   CheckBox,
-  Input
+  Input,
 } from "react-native-elements";
 import styles from "./SearchPageStyle";
 import { Location, Permissions, ImagePicker } from "expo";
 // import CheckBox from 'react-native-check-box'
 import { Icon } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
   View,
   Dimensions,
   ImageBackground,
-  TextInput ,
+  TextInput,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
 } from "react-native";
 const { height, width } = Dimensions.get("window");
+
+const DissmisKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default class Public extends React.Component {
   constructor(props) {
@@ -209,6 +220,8 @@ export default class Public extends React.Component {
             <Ionicons name="md-arrow-back" size={28} />
           </TouchableOpacity>
         </View>
+
+
         <View
           style={{
             alignItems: "center",
@@ -221,36 +234,34 @@ export default class Public extends React.Component {
             resizeMode="cover"
           />
         </View>
-        <View style={styles.Header}>
+
         
+        <View style={styles.Header}>
           <View>
             <Input
-              placeholder="שם האירוע"
               containerStyle={{ width: 300 }}
               errorMessage="*ציין את שם האירוע המלא"
-              rightIcon={<Icon name="account-circle" size={24} color="black" />}
+              rightIcon={<Entypo name="edit" size={20} />}
               onChangeText={e => this.setState({ eventname: e })}
             />
           </View>
 
           <View>
             <Input
-              placeholder="כתובת האירוע"
               containerStyle={{ width: 300 }}
               errorMessage="*ציין את הכתובת המדוייקת של האירוע"
               onChangeText={this.handleAddress}
-              rightIcon={<Icon name="account-circle" size={24} color="black" />}
+              rightIcon={<Entypo name="location" size={20} />}
             />
           </View>
 
           <View>
             <Input
               containerStyle={{ width: 300 }}
-              placeholder="טלפון להזמנות"
               errorStyle={{ color: "red" }}
               errorMessage="*טלפון להזמנת מקום"
               onChangeText={e => this.setState({ eventabout: e })}
-              rightIcon={<Icon name="phone" size={24} color="black" />}
+              rightIcon={<AntDesign name="mobile1" size={20} />}
             />
           </View>
           <TextInput
@@ -260,7 +271,7 @@ export default class Public extends React.Component {
             placeholderTextColor={"#9E9E9E"}
             numberOfLines={10}
             multiline={true}
-            />
+          />
 
           <View style={styles.addImage}>
             <TouchableOpacity onPress={this.openCamera} style={styles.icon}>
@@ -278,7 +289,13 @@ export default class Public extends React.Component {
             </TouchableOpacity>
           </View>
 
-          <Button onPress={this.handleSubmit} title="פרסם אירוע" />
+          <TouchableOpacity
+              style={styles.publishButton}
+              onPress={this.handleSubmit}
+            >
+              <Text style={{ color: "white" }}>פרסם אירוע</Text>
+            </TouchableOpacity>
+
 
           {!this.state.Show && (
             <Text style={{ color: "red" }}> {this.state.resLabel}</Text>

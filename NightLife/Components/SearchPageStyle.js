@@ -24,7 +24,8 @@ export default StyleSheet.create({
         borderColor: '#9E9E9E',
         borderRadius: 10 ,
         backgroundColor: "rgba(255,255,255,.5)",
-        width: 300
+        width: 300,
+        marginTop:20,
          
         },
     input: {
@@ -133,5 +134,16 @@ export default StyleSheet.create({
       },
     icon:{
         margin:20
+    },
+    publishButton:{
+        backgroundColor: "rgba(0,0,255,.7)",
+        borderRadius: 200,
+        height: 45,
+        width:150,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10,
+        borderColor: "white",
+        borderWidth: 2
     }
 });
