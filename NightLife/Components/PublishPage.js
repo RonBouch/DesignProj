@@ -29,12 +29,9 @@ export default class Public extends React.Component {
 
     let formIsValid = false;
     this.state = {
-      errors: {},
-      resLabel: "...",
+      resLabel: "",
       Show: false,
       location: null,
-      checkedB: true,
-      checkedR: false,
       data: "",
       delta: 0.1,
 
@@ -263,10 +260,6 @@ export default class Public extends React.Component {
                 <Text>גלריה</Text>
               </View>
             </TouchableOpacity>
-          </View>
-
-          <View>
-            <Text style={{ color: "red" }}>{this.state.errors.address}</Text>
           </View>
 
           <Button onPress={this.handleSubmit} title="פרסם אירוע" />
