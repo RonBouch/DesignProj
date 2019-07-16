@@ -1,17 +1,194 @@
 import React, { Component } from "react";
 import {
+  Button,
+  ThemeProvider,
+  Header,
+  CheckBox,
+  Input
+} from "react-native-elements";
+import { Location, Permissions, ImagePicker } from "expo";
+// import CheckBox from 'react-native-check-box'
+import { Icon } from "react-native-elements";
+import { Ionicons } from "@expo/vector-icons";
+import {
   StyleSheet,
   Text,
   View,
+  TextInput,
+  Dimensions,
+  ImageBackground,
   Image,
-  TouchableOpacity,
-  ImageBackground
+  TouchableOpacity
 } from "react-native";
-export default class HomeMenuView extends React.Component {
+const { height, width } = Dimensions.get("window");
+
+export default class Public extends React.Component {
   constructor(props) {
     super(props);
-    let userId = this.props.navigation.state.params;
-    console.log("userID= " + JSON.stringify(userId));
+
+    let formIsValid = false;
+    this.state = {
+      errors: {},
+      resLabel: "",
+      Show: false,
+      location: null,
+      data: "",
+      delta: 0.1,
+
+      address: "",
+      latitude: 37.78825,
+      longitude: -122.4324,
+      eventname: "",
+      eventabout: "",
+      img: "1"
+    };
+  }
+  handleAddress = e => {
+    this.setState({
+      address: e
+    });
+  };
+
+  openCamera = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false, // higher res on iOS
+      aspect: [4, 3]
+    });
+
+    if (result.cancelled) {
+      return;
+    }
+
+    let localUri = result.uri;
+    let filename = localUri.split("/").pop();
+
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+
+    let formData = new FormData();
+    formData.append("photo", { uri: localUri, name: filename, type });
+    console.log("formdata = ", formData);
+    return await fetch("http://ruppinmobile.tempdomain.co.il/site11/image", {
+      method: "POST",
+      body: formData,
+      header: {
+        "content-type": "multipart/form-data"
+      }
+    });
+  };
+
+  openGallery = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3]
+    });
+    if (!result.cancelled) {
+      console.log("result ", result);
+      this.setState({ img: result.uri });
+      alert(this.state.img);
+    }
+  };
+
+  handleSubmit = async () => {
+    if (this.isValid()) {
+      const { address } = this.state;
+      var detials = address.split(",", 2);
+      console.log("detials = " + detials);
+      if (detials[1] !== "") {
+        this.setState({
+          delta: 0.01
+        });
+      } else {
+        this.setState({
+          delta: 0.2
+        });
+      }
+      if (
+        (await Location.geocodeAsync(address)) == "" ||
+        (await Location.geocodeAsync(address)) == null
+      ) {
+        this.setState({
+          resLabel: "*עיר או רחוב לא תקינים, נסה שוב!"
+        });
+        return;
+      }
+      if (this.state.eventabout == "" || this.state.eventname == "") {
+        this.setState({
+          resLabel: "*אנא מלא את כל השדות!."
+        });
+        return;
+      }
+      let geocode = await Location.geocodeAsync(address);
+      console.log("geocode  = " + geocode[0].latitude);
+
+      this.setState({
+        latitude: geocode[0].latitude,
+        longitude: geocode[0].longitude
+      });
+      console.log("latitdue  = " + this.state.latitude);
+
+      const data = {
+        address: this.state.address,
+        lati: this.state.latitude,
+        longi: this.state.longitude,
+        eventname: this.state.eventname,
+        eventabout: this.state.eventabout,
+        img: this.state.img
+      };
+      console.log(data);
+      console.log(
+        "event about event name " + this.state.eventname + this.state.eventabout
+      );
+
+      fetch(
+        "http://ruppinmobile.tempdomain.co.il/site11/WebService.asmx/InsertEvent",
+        {
+          method: "post",
+          headers: new Headers({
+            "Content-Type": "application/json;"
+          }),
+
+          body: JSON.stringify(data)
+        }
+      )
+        .then(res => {
+          console.log("res=", res);
+          return res.json();
+        })
+        .then(
+          result => {
+            console.log("fetch POST= ", result);
+            let u = JSON.parse(result.d);
+            console.log("u = " + u);
+            if (u == null) {
+              console.log("ASffasasf");
+              this.setState({
+                lblerr: ":("
+              });
+              return;
+            } else {
+              this.props.navigation.navigate("HomePage");
+            }
+          },
+          error => {
+            console.log("err post=", error);
+          }
+        );
+    } else {
+      this.setState({
+        resLabel: "*אנא מלא את כל השדות"
+      });
+    }
+  };
+
+  isValid() {
+    let valid = false;
+    const { address } = this.state;
+    if (address.length !== 0) {
+      valid = true;
+    }
+
+    return valid;
   }
 
   render() {
@@ -20,18 +197,39 @@ export default class HomeMenuView extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-        <View style={{padding:20}}>
+        <View
+          style={{
+            marginTop: 10,
+            backgroundColor: "rgba(255,255,255,.3)",
+            padding: 10
+          }}
+        >
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Ionicons name="md-arrow-back" size={28} />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,.3)"
+          }}
+        >
           <Image
             source={require("../assets/smalllogo.png")}
             style={styles.cardImage}
             resizeMode="cover"
           />
         </View>
-
-        <View style={styles.inner}>
-          <View style={styles.formContainer}>
-            
+        <View style={styles.main}>
+          <View style={styles.paragraph}>
+            <Text style={styles.text}>
+              האפליקציה באה לתת מענה לכל אדם אשר מחפש מקום בילוי או מעוניין
+              לפרסם מקום בילוי בו עליו הוא ממליץ.
+            </Text>
           </View>
+          <Text style={styles.text}>
+            באמצעות האפליקציה שפיתחנו, כל אדם יכול ל
+          </Text>
         </View>
       </ImageBackground>
     );
@@ -40,75 +238,24 @@ export default class HomeMenuView extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    paddingTop: 60
+    flex: 1,
+    justifyContent: "center",
+    paddingVertical: 10
+  },
+  main: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(255,255,255,.3)"
+  },
+  text: {
+    fontSize: 20,
+    color: "black",
+  },
+  paragraph:{
+    height:200,
   },
   cardImage: {
-    width: 255,
-    height: 140
-  },
-  inner: {
-    width: "80%",
-    height: "100%"
-  },
-  icon: {
-    width: 100,
-    height: 100,
-    borderRadius: 200
-  },
-  title: {
-    fontSize: 40,
-    margin: 30
-  },
-  input: {
-    borderRadius: 10,
-    fontSize: 10,
-    height: 40,
-    width: 200,
-    textAlign: "center",
-    borderColor: "gray",
-    borderWidth: 2,
-    margin: 30
-  },
-  textMessage: {
-    margin: 50,
-    color: "red"
-  },
-  registerBtn: {
-    color: "red"
-  },
-  genderRadio: {
-    flexDirection: "row",
-    margin: 10
-  },
-  textMessage: {
-    margin: 10,
-    color: "red"
-  },
-  buttonContainer: {
-    backgroundColor: "rgba(255,255,255,.3)",
-    borderRadius: 200,
-    alignItems: "center",
-    flexGrow: 1,
-    justifyContent: "center",
-    margin: 10,
-    marginTop: 20
-  },
-  formContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    paddingBottom: 150
-  },
-  buttonContainerFB: {
-    backgroundColor: "#2980b9",
-    paddingVertical: 10,
-    width: 240,
-    height: 45,
-    borderRadius: 200,
-    alignItems: "center",
-    flexGrow: 1,
-    justifyContent: "center",
-    marginTop: 30
-  },
-  info: {}
+    width: 235,
+    height: 130
+  }
 });

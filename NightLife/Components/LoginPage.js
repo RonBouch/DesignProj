@@ -16,9 +16,10 @@ export default class Login extends React.Component {
     this.password = "";
     this.email = "";
     this.vaildForm = false;
-    this.state = {
-      message: ""
-    };
+    (global.id = 0),
+      (this.state = {
+        message: ""
+      });
   }
 
   changePass = e => {
@@ -73,6 +74,8 @@ export default class Login extends React.Component {
               });
               return;
             } else {
+              global.id = u.ID;
+              console.log("user id = " + global.id);
               this.props.navigation.navigate("HomePage");
             }
             console.log(result.d);

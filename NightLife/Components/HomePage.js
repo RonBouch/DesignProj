@@ -14,13 +14,18 @@ export default class HomeMenuView extends React.Component {
     console.log("userID= " + JSON.stringify(userId));
   }
 
+  logOut = () => {
+    global.id = 0;
+    this.props.navigation.navigate("LoginPage");
+  };
+
   render() {
     return (
       <ImageBackground
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-        <View style={{padding:20}}>
+        <View style={{ padding: 20 }}>
           <Image
             source={require("../assets/smalllogo.png")}
             style={styles.cardImage}
@@ -76,7 +81,10 @@ export default class HomeMenuView extends React.Component {
               <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("AboutUsPage")} style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("AboutUsPage")}
+              style={styles.buttonContainer}
+            >
               <Image
                 style={styles.icon}
                 source={{
@@ -102,7 +110,7 @@ export default class HomeMenuView extends React.Component {
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() => this.props.navigation.navigate("LoginPage")}
+              onPress={this.logOut}
             >
               <Image
                 style={styles.icon}
@@ -195,6 +203,6 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   info: {
-    fontWeight: 'bold',
+    fontWeight: "bold"
   }
 });
