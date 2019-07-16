@@ -46,7 +46,7 @@ export default class Public extends React.Component {
       location: null,
       data: "",
       delta: 0.1,
-
+      eventphone:"",
       address: "",
       latitude: 37.78825,
       longitude: -122.4324,
@@ -145,7 +145,8 @@ export default class Public extends React.Component {
         longi: this.state.longitude,
         eventname: this.state.eventname,
         eventabout: this.state.eventabout,
-        img: this.state.img
+        img: this.state.img,
+        eventphone:this.state.eventphone
       };
       console.log(data);
       console.log(
@@ -260,7 +261,7 @@ export default class Public extends React.Component {
               containerStyle={{ width: 300 }}
               errorStyle={{ color: "red" }}
               errorMessage="*טלפון להזמנת מקום"
-              onChangeText={e => this.setState({ eventabout: e })}
+              onChangeText={e => this.setState({ eventphone: e })}
               rightIcon={<AntDesign name="mobile1" size={20} />}
             />
           </View>
@@ -271,6 +272,8 @@ export default class Public extends React.Component {
             placeholderTextColor={"#9E9E9E"}
             numberOfLines={10}
             multiline={true}
+            onChangeText={e => this.setState({ eventabout: e })}
+
           />
 
           <View style={styles.addImage}>
