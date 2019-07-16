@@ -148,7 +148,7 @@ export default class Login extends React.Component {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={this.GoogleBtn}
+              onPress={() => this.props.navigation.navigate('GooglePage')}
               style={styles.googleButton}
             >
               <Text style={styles.buttonText}>
