@@ -30,7 +30,7 @@ export default class Public extends React.Component {
     let formIsValid = false;
     this.state = {
       errors: {},
-      resLabel: "...",
+      resLabel: "",
       Show: false,
       location: null,
       checkedB: true,
@@ -70,15 +70,14 @@ export default class Public extends React.Component {
 
     let formData = new FormData();
     formData.append("photo", { uri: localUri, name: filename, type });
-    console.log('formdata = ',formData);
-    return await fetch('http://ruppinmobile.tempdomain.co.il/site11/image', {
-      method: 'POST',
+    console.log("formdata = ", formData);
+    return await fetch("http://ruppinmobile.tempdomain.co.il/site11/image", {
+      method: "POST",
       body: formData,
       header: {
-        'content-type': 'multipart/form-data',
-      },
+        "content-type": "multipart/form-data"
+      }
     });
-  
   };
 
   openGallery = async () => {
@@ -112,16 +111,15 @@ export default class Public extends React.Component {
         (await Location.geocodeAsync(address)) == null
       ) {
         this.setState({
-          resLabel:"*עיר או רחוב לא תקינים, נסה שוב!"
-        })
+          resLabel: "*עיר או רחוב לא תקינים, נסה שוב!"
+        });
         return;
       }
-      if(this.state.eventabout==""||this.state.eventname==""){
+      if (this.state.eventabout == "" || this.state.eventname == "") {
         this.setState({
-          resLabel:'*אנא מלא את כל השדות!.'
-        })
+          resLabel: "*אנא מלא את כל השדות!."
+        });
         return;
-
       }
       let geocode = await Location.geocodeAsync(address);
       console.log("geocode  = " + geocode[0].latitude);
@@ -181,8 +179,8 @@ export default class Public extends React.Component {
         );
     } else {
       this.setState({
-        resLabel:'*אנא מלא את כל השדות'
-      })
+        resLabel: "*אנא מלא את כל השדות"
+      });
     }
   };
 
@@ -202,22 +200,30 @@ export default class Public extends React.Component {
         source={require("../assets/backGroung.jpg")}
         style={styles.container}
       >
-       <View style={{ marginTop:10,backgroundColor: 'rgba(255,255,255,.3)',padding:10 }}>
-               <TouchableOpacity
-             onPress={() => this.props.navigation.goBack()}
-            >
-            <Ionicons name="md-arrow-back" size={28}  />
-            </TouchableOpacity>
-          </View>
-          <View style={{alignItems:'center',backgroundColor: 'rgba(255,255,255,.3)'}}>
+        <View
+          style={{
+            marginTop: 10,
+            backgroundColor: "rgba(255,255,255,.3)",
+            padding: 10
+          }}
+        >
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Ionicons name="md-arrow-back" size={28} />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,.3)"
+          }}
+        >
           <Image
             source={require("../assets/smalllogo.png")}
             style={styles.cardImage}
             resizeMode="cover"
           />
-          </View>
+        </View>
         <View style={styles.Header}>
-         
           <View>
             <Input
               placeholder="שם האירוע"
