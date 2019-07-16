@@ -6,6 +6,7 @@ import HomePage from "./Components/HomePage.js";
 import SearchPage from "./Components/SearchPage.js";
 import PublishPage from "./Components/PublishPage";
 import FaceBookPage from "./Components/FaceBookPage";
+import AboutUsPage from "./Components/AboutUsPage"; 
 
 class App extends React.Component {
   render() {
@@ -18,6 +19,8 @@ const StackNav = createStackNavigator(
     HomePage: HomePage,
 
     SearchPage: SearchPage,
+
+    AboutUsPage: AboutUsPage,
 
     RegisterPage: RegisterPage,
 

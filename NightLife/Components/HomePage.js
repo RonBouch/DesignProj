@@ -46,6 +46,7 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}> חיפוש</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -60,6 +61,7 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}>פרסום אירוע</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.buttonContainer}>
@@ -71,9 +73,10 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}>הפרופיל שלי</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonContainer}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("AboutUsPage")} style={styles.buttonContainer}>
               <Image
                 style={styles.icon}
                 source={{
@@ -82,6 +85,7 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}>About Us</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.buttonContainer}>
@@ -93,6 +97,7 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}>המועדפים שלי</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -107,6 +112,7 @@ export default class HomeMenuView extends React.Component {
                 }}
               />
               <Text style={styles.info}>התנתק</Text>
+              <Text style={styles.info}>{}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -117,8 +123,9 @@ export default class HomeMenuView extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
-    paddingTop: 60
+    paddingTop: 40
   },
   cardImage: {
     width: 255,
@@ -163,13 +170,13 @@ const styles = StyleSheet.create({
     color: "red"
   },
   buttonContainer: {
-    backgroundColor: "rgba(255,255,255,.3)",
+    backgroundColor: "rgba(255,255,255,.5)",
     borderRadius: 200,
     alignItems: "center",
     flexGrow: 1,
     justifyContent: "center",
     margin: 10,
-    marginTop: 20
+    marginTop: 10
   },
   formContainer: {
     flexDirection: "row",
@@ -187,5 +194,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 30
   },
-  info: {}
+  info: {
+    fontWeight: 'bold',
+  }
 });
