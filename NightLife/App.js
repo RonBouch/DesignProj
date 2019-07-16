@@ -32,7 +32,7 @@ const StackNav = createStackNavigator(
 
     FaceBookPage: FaceBookPage,
 
-    GooglePage: GooeglePage,
+    GooglePage: GooglePage,
   },
   { headerMode: "none", defaultNavigationOptions: { headerVisable: false } },
   {
