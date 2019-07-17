@@ -9,7 +9,9 @@ import {
   ImageBackground,
   Image
 } from "react-native";
-
+import {Input} from 'react-native-elements';
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -121,6 +123,8 @@ export default class Login extends React.Component {
                 keyboardType="email-address"
                 placeholder="אימייל"
                 onChangeText={this.changeEmail}
+                rightIcon={<AntDesign name="mail" size={20} />}
+
               />
 
               <TextInput
@@ -128,6 +132,7 @@ export default class Login extends React.Component {
                 secureTextEntry={true}
                 placeholder="סיסמא"
                 onChangeText={this.changePass}
+                rightIcon={<Entypo name="lock" size={20} />}
               />
 
               <TouchableOpacity

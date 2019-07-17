@@ -367,7 +367,7 @@ export default class PartyPage extends React.Component {
                         מידע על האירוע : {this.state.place.EventAbout}{" "}
                       </Text>
                     </View>
-                    <View style={{ flexDirection: "row-reverse", bottom:0 }}>
+                    <View style={{ flexDirection: "row-reverse", bottom:5 }}>
                       <View style={{ flex: 1 }} />
                       <View style={{ flex: 2, marginTop: 10 }}>
                       {this.state.showNumber!=true?  <TouchableOpacity
