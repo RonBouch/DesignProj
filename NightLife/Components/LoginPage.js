@@ -123,8 +123,6 @@ export default class Login extends React.Component {
                 keyboardType="email-address"
                 placeholder="אימייל"
                 onChangeText={this.changeEmail}
-                rightIcon={<AntDesign name="mail" size={20} />}
-
               />
 
               <TextInput
@@ -132,7 +130,6 @@ export default class Login extends React.Component {
                 secureTextEntry={true}
                 placeholder="סיסמא"
                 onChangeText={this.changePass}
-                rightIcon={<Entypo name="lock" size={20} />}
               />
 
               <TouchableOpacity

@@ -224,11 +224,11 @@ export default class Public extends React.Component {
           <View style={styles.paragraph}>
             <Text style={styles.text}>
               האפליקציה באה לתת מענה לכל אדם אשר מחפש מקום בילוי או מעוניין
-              לפרסם מקום בילוי בו עליו הוא ממליץ.
+              לפרסם מקום בילוי.
             </Text>
           </View>
           <Text style={styles.text}>
-            באמצעות האפליקציה שפיתחנו, כל אדם יכול למצא מקום בילוי בקלות רבה
+            .באמצעות האפליקציה שפיתחנו, כל אדם יכול למצא מקום בילוי בקלות רבה
           </Text>
         </View>
       </ImageBackground>

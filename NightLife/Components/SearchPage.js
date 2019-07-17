@@ -9,6 +9,9 @@ import {
   ImageBackground,
   Linking
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import styles from "./SearchPageStyle";
 import { CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -309,8 +312,11 @@ export default class PartyPage extends React.Component {
                   }}
                   title="my place:)"
                   description="here i am"
-                  //image={require('../assets/icon.png')}  img for The Marker!!!
+                  color="blue"
+                 
                 />
+               
+
               </MapView>
             </View>
 
